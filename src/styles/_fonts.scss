@@ -1,0 +1,86 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-Nov-2015, 09:03:10
+    Author     : kev
+*/
+
+@font-face {
+    font-family: 'ssp-reg';
+    src: url('/fonts/sourcesanspro-regular-webfont.eot');
+    src: url('/fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/sourcesanspro-regular-webfont.woff') format('woff'),
+      url('/fonts/sourcesanspro-regular-webfont.ttf') format('truetype'),
+      url('/fonts/sourcesanspro-regular-webfont.svg#ssp-reg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ssp-semi-bold';
+    src: url('/fonts/sourcesanspro-semibold-webfont.eot');
+    src: url('/fonts/sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/sourcesanspro-semibold-webfont.woff') format('woff'),
+      url('/fonts/sourcesanspro-semibold-webfont.ttf') format('truetype'),
+      url('/fonts/sourcesanspro-semibold-webfont.svg#ssp-semi-bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ssp-bold';
+    src: url('/fonts/sourcesanspro-bold-webfont.eot');
+    src: url('/fonts/sourcesanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/sourcesanspro-bold-webfont.woff') format('woff'),
+      url('/fonts/sourcesanspro-bold-webfont.ttf') format('truetype'),
+      url('/fonts/sourcesanspro-bold-webfont.svg#ssp-bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ssp-light';  
+    src: url('/fonts/sourcesanspro-light-webfont.eot');
+    src: url('/fonts/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/sourcesanspro-light-webfont.woff') format('woff'),
+      url('/fonts/sourcesanspro-light-webfont.ttf') format('truetype'),
+      url('/fonts/sourcesanspro-light-webfont.svg#ssp-light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ssp-it-reg'; 
+    src: url('/fonts/sourcesanspro-it-webfont.eot');
+    src: url('/fonts/sourcesanspro-it-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/sourcesanspro-it-webfont.woff') format('woff'),
+      url('/fonts/sourcesanspro-it-webfont.ttf') format('truetype'),
+      url('/fonts/sourcesanspro-it-webfont.svg#ssp-it-reg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rob-con-l';
+    src: url('/fonts/RobotoCondensed-Light-webfont.eot');
+    src: url('/fonts/RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/RobotoCondensed-Light-webfont.woff') format('woff'),
+      url('/fonts/RobotoCondensed-Light-webfont.ttf') format('truetype'),
+      url('/fonts/RobotoCondensed-Light-webfont.svg#rob-con-l') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rob-con-b';
+    src: url('/fonts/RobotoCondensed-Bold-webfont.eot');
+    src: url('/fonts/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/RobotoCondensed-Bold-webfont.woff') format('woff'),
+      url('/fonts/RobotoCondensed-Bold-webfont.ttf') format('truetype'),
+      url('/fonts/RobotoCondensed-Bold-webfont.svg#rob-con-b') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

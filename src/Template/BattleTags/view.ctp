@@ -1,16 +1,4 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Battle Tag'), ['action' => 'edit', $battleTag->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Battle Tag'), ['action' => 'delete', $battleTag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $battleTag->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Battle Tags'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Battle Tag'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Hots Logs'), ['controller' => 'HotsLogs', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Hots Log'), ['controller' => 'HotsLogs', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
+
 <div class="battleTags view large-9 medium-8 columns content">
     <h3><?= h($battleTag->name) ?></h3>
     <table class="vertical-table">

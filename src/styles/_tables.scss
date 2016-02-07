@@ -1,0 +1,52 @@
+/**
+ * Application: Your Safety PAL
+ * Version: 0.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / SASS / Tables
+ *
+**/
+
+// Table defaults
+table {
+  table-layout: fixed;
+  background-color: $veryLightGrey;
+  border: 5px solid $veryLightGrey;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: $paragraph;
+  font-size: 18px;
+}
+
+
+th {
+  text-align: left;
+  border-bottom: 1px solid $midGrey;
+
+  &.actions {
+    font-family: $paragraph;
+  }
+}
+
+.actions {
+  text-align: right;
+}
+
+// Subtle zebra stripes
+tbody tr:nth-child(odd) {
+   background-color: $white;
+}
+
+
+
+
+

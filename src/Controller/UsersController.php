@@ -5,17 +5,15 @@
  * @property \App\Model\Table\UsersTable $Users
  */
 namespace App\Controller;
-
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\I18n\Time;
 use Cake\Mailer\Email;
 use Cake\Utility\Security;
 use Cake\Auth\DefaultPasswordHasher;;
-
 class UsersController extends AppController
 {
-	/**-- Initialisation Methods --**/
+  /**-- Initialisation Methods --**/
   /**
    * Before Filter
    *
@@ -23,25 +21,25 @@ class UsersController extends AppController
   public function beforeFilter(Event $event){
     parent::beforeFilter($event);
     $this->Auth->allow(['register', 
-												'requestPasswordReset', 
-												'resetPassword', 
-												'registered', 
-												'login', 
-												'checkEmail', 
-												'forgotUsername', 
-												'getUsers'
-											]);
+                        'requestPasswordReset', 
+                        'resetPassword', 
+                        'registered', 
+                        'login', 
+                        'checkEmail', 
+                        'forgotUsername', 
+                        'getUsers'
+                      ]);
   }
-	
-	/**
+  
+  /**
    * Is Authorized Method
    *
   **/
   public function isAuthorized($user){
     return true; 
   }
-	
-	/**
+  
+  /**
    * Profile method
    *
    *
@@ -64,12 +62,10 @@ class UsersController extends AppController
     foreach ($user->user_contacts as $c) {
       $contacts[] = $c->user_contact_id;
     }
-
     $settings = [];
     $settings['fields'] = ['name_first', 'name_last', 'name_middle', 'id'];
     $settings['conditions'] = ['Users.id IN'=>$contacts];
     $usernames = $this->Users->find('all', $settings);
-
     $query = $this->Users->UserContacts
       ->find('all')
       ->where(['user_id =' => $this->request->session()->read('User.id')])
@@ -78,11 +74,10 @@ class UsersController extends AppController
     foreach($query as $q){
       $myContacts[] = $q->user_contact_id; 
     }*/
-
     $this->set(compact('user', 'isMine', 'usernames'));
   }
-	
-	/**
+  
+  /**
    * The login method
    * 
    * Logs the user in.
@@ -117,8 +112,8 @@ class UsersController extends AppController
       }
     } 
   }
-	
-	/**
+  
+  /**
    * Save our user details into the session.
    * This allows us to access the data from anywhere.
    *
@@ -129,8 +124,8 @@ class UsersController extends AppController
     $session->write('User.username', $user['username']);
     $session->write('User.id', $user['id']);
   }
-	
-	/**
+  
+  /**
    * The logout function
    * Logs the user out and destroys the session 
    *
@@ -140,8 +135,8 @@ class UsersController extends AppController
     $session->destroy();
     return $this->redirect($this->Auth->logout());
   }
-	
-	  /**
+  
+    /**
    * Request Password Reset Method
    *
   **/
@@ -150,19 +145,17 @@ class UsersController extends AppController
       $this->loadModel('UserEmails');
       $userEmail = $this->UserEmails->findByEmail($this->request->data['email'])->first();
       $user = $this->Users->get($userEmail['user_id']);
-			
+      
       if($user == null){
         $this->Flash->error(__('Sorry, that email was not recognised. Please try again.'));
       } else {
         // Generate a hash
         $hash = Security::hash(date('Y-m-Y-i-s') . $user['username'] . $_SERVER['REMOTE_ADDR']);
-
         // Save hash and reset time to user's record
         $save = $this->Users->get($user['id']);
         $save->reset_hash = $hash;
         $save->reset_time = date('Y-m-d H:i:s');
         $this->Users->save($save);
-
         // Email a link including the hash to the user
         $to = $this->request->data['email'];
         $message = 'Please click on this link to reset your password:'.PHP_EOL.PHP_EOL.' http://' . $_SERVER['HTTP_HOST'] . '/users/resetPassword/' . $hash . '/' . $user['id'] . PHP_EOL . PHP_EOL .' This link will expire in two hours.';
@@ -172,15 +165,12 @@ class UsersController extends AppController
             ->to($to)
             ->subject('Reset your password')
             ->send($message);
-
         // Set flash and redirect
         $this->Flash->success(__('Thank you - we have sent you a link to reset your password.'));
         $this->redirect(['controller'=>'users', 'action'=>'login']);
       }
     }
   }
-
-
   /**
    * Reset Password
    *
@@ -217,8 +207,6 @@ class UsersController extends AppController
         ]);
     }
   }
-
-
   /**
    * Emails a user thier username. 
    * If they provide a valid password and email address
@@ -251,8 +239,8 @@ class UsersController extends AppController
       }
     }
   }
-	
-	/**
+  
+  /**
   * Adds a user to the contacts of the logged in user
   *
  **/
@@ -281,8 +269,8 @@ class UsersController extends AppController
     }
     return $this->redirect(['action' => 'profile', $userId]);
   }
-	
-	/**
+  
+  /**
   * Removes a contact from the contacts of the logged in user
   *
  **/
@@ -310,8 +298,8 @@ class UsersController extends AppController
     }
     return $this->redirect(['action' => 'profile', $userId]);
   }
-	
-	/**
+  
+  /**
    * Register Method
    *
    * @return void Redirects on successful add, renders view otherwise.
@@ -319,23 +307,19 @@ class UsersController extends AppController
   public function register()
   {  
     $user = $this->Users->newEntity();
-
     if ($this->request->is('post')) {
       // Pull the email address from the request data
       $request = $this->request->data;
       $email = $request['email'];
       unset($request['email']);  
-
       // Set some values
       $user = $this->Users->patchEntity($user, $request);
       $user['account_status'] = 0;
       $user['last_access'] = Time::now();
-
       if ($this->Users->save($user)) {
         // Get the user_id now we have one
         $user = $this->Users->findByUsername($user['username'])->first();
         $userId = $user['id'];
-
         // Save registration email address
         $this->loadModel('userEmails');
         $contact = $this->userEmails->newEntity();
@@ -346,36 +330,30 @@ class UsersController extends AppController
         $contact['created_by'] = $userId;
         $contact['modified_by'] = $userId;
         $this->userEmails->save($contact);
-
         // Get email ID so we can validate it
         $userEmail = $this->userEmails->findByUserId($user['id'])->first();
         $emailId = $userEmail['id'];
-
         // Set these bits, now we have the ID
         $user['created_by'] = $userId;
         $user['modified_by'] = $userId;
         $this->Users->save($user);
-
         // Send confimation email 
         $this->_confirmEmail($user, $emailId);
-
         $this->redirect(['controller'=>'Users' ,'action'=>'login']);
       } else {
         $this->Flash->error(__('The user could not be saved. Please, try again.'));
       }
     }
-
     $users = $this->Users->find('list', ['limit' => 200, 'valueField' => 'username']);
     $usernames = [];
     foreach ($users as $u){
       $usernames[] = $u;
     }
-
     $this->set('allUsernames', $usernames);
     $this->set(compact('user'));
   }
-	
-	/**
+  
+  /**
    * Logs in the user passed to it without needing credentials
    *
   **/
@@ -385,9 +363,8 @@ class UsersController extends AppController
     $this->_sessionSetUp($user);
     $this->Flash->success(__('You are now logged in'));
   }
-	
-	/**-- Private Methods --**/
-
+  
+  /**-- Private Methods --**/
   /**
    * Sends the user an email to confirm that the correct address has been entered
    *
@@ -395,13 +372,11 @@ class UsersController extends AppController
   private function _confirmEmail($user, $emailId){
       // Generate a hash
       $hash = Security::hash(date('Y-m-Y-i-s') . $user['username'] . $_SERVER['REMOTE_ADDR']);
-
       // Save hash and reset time to user's record
       $save = $this->Users->get($user['id']);
       $save->reset_hash = $hash;
       $save->reset_time = date('Y-m-d H:i:s');
       $this->Users->save($save);
-
       // Email a link including the hash to the user
       $to = $this->request->data['email'];
       $message = 'Please click on this link to confirm your email address and activate your account:'. PHP_EOL.
@@ -415,12 +390,9 @@ class UsersController extends AppController
         ->to($to)
         ->subject('Confirm your email address')
         ->send($message);
-
       // Set flash and redirect
       $this->Flash->success(__('Thank you - we have sent you a link to confirm your email address.'));
     }
-
-
   /**
    * Check the confimation link is correct
    * If it is set the account and email as verified
@@ -437,12 +409,10 @@ class UsersController extends AppController
         $user['reset_hash'] = null;
         $user['reset_time'] = null;
         $this->Users->save($user);
-
         $this->loadModel('UserEmails');
         $email = $this->UserEmails->get($cId);
         $email['verified'] = 1;
         $this->UserEmails->save($email);
-
         $this->_autoLogin($user);
         $this->Flash->success(__('Your email has been verified and your account is now active.'));
         $this->redirect(['controller' => 'Users', 'action' => 'index']);
@@ -458,77 +428,72 @@ class UsersController extends AppController
       $this->redirect(['controller' => 'Pages','action'=>'display', 'expired']);
     }
   }
-
-	/**
-	 * Index method
-	 *
-	 */
-	public function index(){
-			$this->set('users', $this->paginate($this->Users));
-			$this->set(compact('users'));
-	}
-
-	/**
-	 * View method
-	 *
-	 */
-	public function view($id = null){
-		$user = $this->Users->get($id, [
-			'contain' => ['UserContacts', 'UserEmails']
-		]);
-		$this->set('user', $user);
-	}
-
-	/**
-	 * Add method
-	 *
-	 */
-	public function add(){
-		$user = $this->Users->newEntity();
-		if ($this->request->is('post')) {
-			$user = $this->Users->patchEntity($user, $this->request->data);
-			if ($this->Users->save($user)) {
-				$this->Flash->success(__('The user has been saved.'));
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error(__('The user could not be saved. Please, try again.'));
-			}
-		}
-		$this->set(compact('user'));
-	}
-
-	/**
-	 * Edit method
-	 *
-	 */
-	public function edit($id = null){
-		$user = $this->Users->get($id, [
-				'contain' => []
-		]);
-		if ($this->request->is(['patch', 'post', 'put'])) {
-				$user = $this->Users->patchEntity($user, $this->request->data);
-				if ($this->Users->save($user)) {
-						$this->Flash->success(__('The user has been saved.'));
-						return $this->redirect(['action' => 'index']);
-				} else {
-						$this->Flash->error(__('The user could not be saved. Please, try again.'));
-				}
-		}
-		$this->set(compact('user'));
-	}
-
-	/**
-	 * Delete method
-	 *
-	 */
-	public function delete($id = null){
-		$this->request->allowMethod(['post', 'delete']);
-		$user = $this->Users->get($id);
-		if ($this->Users->delete($user)) {
-			$this->Flash->success(__('The user has been deleted.'));
-		} else {
-			$this->Flash->error(__('The user could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(['action' => 'index']);
-	}
+  /**
+   * Index method
+   *
+   */
+  public function index(){
+      $this->set('users', $this->paginate($this->Users));
+      $this->set(compact('users'));
+  }
+  /**
+   * View method
+   *
+   */
+  public function view($id = null){
+    $user = $this->Users->get($id, [
+      'contain' => ['UserContacts', 'UserEmails']
+    ]);
+    $this->set('user', $user);
+  }
+  /**
+   * Add method
+   *
+   */
+  public function add(){
+    $user = $this->Users->newEntity();
+    if ($this->request->is('post')) {
+      $user = $this->Users->patchEntity($user, $this->request->data);
+      if ($this->Users->save($user)) {
+        $this->Flash->success(__('The user has been saved.'));
+        return $this->redirect(['action' => 'index']);
+      } else {
+        $this->Flash->error(__('The user could not be saved. Please, try again.'));
+      }
+    }
+    $this->set(compact('user'));
+  }
+  /**
+   * Edit method
+   *
+   */
+  public function edit($id = null){
+    $user = $this->Users->get($id, [
+        'contain' => []
+    ]);
+    if ($this->request->is(['patch', 'post', 'put'])) {
+        $user = $this->Users->patchEntity($user, $this->request->data);
+        if ($this->Users->save($user)) {
+            $this->Flash->success(__('The user has been saved.'));
+            return $this->redirect(['action' => 'index']);
+        } else {
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+    }
+    $this->set(compact('user'));
+  }
+  /**
+   * Delete method
+   *
+   */
+  public function delete($id = null){
+    $this->request->allowMethod(['post', 'delete']);
+    $user = $this->Users->get($id);
+    if ($this->Users->delete($user)) {
+      $this->Flash->success(__('The user has been deleted.'));
+    } else {
+      $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+    }
+    return $this->redirect(['action' => 'index']);
+  }
 }

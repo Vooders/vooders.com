@@ -1,0 +1,36 @@
+/**
+ * Application: Your Safety PAL
+ * Version: 0.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / SASS / Variables
+ *
+**/
+// Colours
+$veryLightGrey: #f0f0f0;
+$white: #fff;
+$stroke: #ccc;
+$midGrey: #eee;
+$red: #ff0000;
+$black: #000;
+// Nav text
+$topMenu: 'rob-con-b', arial, sans;
+$subMenu: 'rob-con-l', arial, sans;
+
+// Main body text
+$paragraph: 'ssp-reg', arial, sans;
+$mainHeading: 'ssp-light', arial, sans;
+$headingOne: 'ssp-light', arial, sans;
+$headingTwo: 'ssp-light', arial, sans;
+$headingThree: 'ssp-light', arial, sans;
+$headingFour: 'ssp-bold', arail, sans;
+$link: 'ssp-reg', arial, sans;
+
+// Footer text
+$footerText: 'ssp-semi-bold', arial, sans;
+// Fancy button stuff
+  $button-size : 1.5rem; 
+  // increase this to see the transformations in slow-motio
+  $transition: .5s; 

@@ -1,0 +1,25 @@
+/**
+ * Application: Your Safety PAL
+ * Version: 0.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / SASS / Style
+ *
+**/
+
+// Simply call in all the style sheets to build the css
+
+@import "reset";
+@import "variables";
+@import "grid";
+@import "typography";
+@import "navigation";
+@import "button-effects";
+@import "fonts";
+@import "forms";
+@import "icons";
+@import "buttons"; 
+@import "layout";
+@import "tables";

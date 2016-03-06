@@ -1,8 +1,7 @@
-
-    <header>
-        <h1>Vooders.com</h1>
-    </header>
-    <div id="content">
-        
-    </div>
+<header class="row">
+ 
+</header>
+<div id="content">
+    
+</div>
 

@@ -20,15 +20,17 @@ class UsersController extends AppController
   **/
   public function beforeFilter(Event $event){
     parent::beforeFilter($event);
-    $this->Auth->allow(['register', 
-                        'requestPasswordReset', 
-                        'resetPassword', 
-                        'registered', 
-                        'login', 
-                        'checkEmail', 
-                        'forgotUsername', 
-                        'getUsers'
-                      ]);
+    $this->Auth->allow(
+      ['register', 
+        'requestPasswordReset', 
+        'resetPassword', 
+        'registered', 
+        'login', 
+        'checkEmail', 
+        'forgotUsername', 
+        'getUsers'
+      ]
+    );
   }
   
   /**
@@ -44,37 +46,18 @@ class UsersController extends AppController
    *
    *
   **/
-  public function profile($id = null)
-  {
-    // Check to see if we're on our own profile
-    $isMine = false;
-    if ($id == $this->request->session()->read('User.id'))
-      $isMine = true;
+  public function profile(){
+    $userId =  $this->request->session()->read('User.id');
  
-    $user = $this->Users->get($id, [
+    $user = $this->Users->get($userId, [
       'contain' => [
         'UserContacts', 
-        'UserEmails'
+        'UserEmails',
+        'BattleTags'
       ]
     ]);
     
-    /*$contacts = [];
-    foreach ($user->user_contacts as $c) {
-      $contacts[] = $c->user_contact_id;
-    }
-    $settings = [];
-    $settings['fields'] = ['name_first', 'name_last', 'name_middle', 'id'];
-    $settings['conditions'] = ['Users.id IN'=>$contacts];
-    $usernames = $this->Users->find('all', $settings);
-    $query = $this->Users->UserContacts
-      ->find('all')
-      ->where(['user_id =' => $this->request->session()->read('User.id')])
-      ->toArray();
-    $myContacts = [];
-    foreach($query as $q){
-      $myContacts[] = $q->user_contact_id; 
-    }*/
-    $this->set(compact('user', 'isMine', 'usernames'));
+    $this->set(compact('user'));
   }
   
   /**
@@ -228,7 +211,7 @@ class UsersController extends AppController
                     ' -Vooderbot';
         $email = new Email('default');
         $email->transport('mailjet')
-            ->from(['vooderbot@vooders.com' => 'Markets Meet'])
+            ->from(['vooderbot@vooders.com' => 'Vooders.com'])
             ->to($to)
             ->subject('Heres your username')
             ->send($message);
@@ -385,7 +368,7 @@ class UsersController extends AppController
                   PHP_EOL .
                   ' -Vooderbot';
       $email = new Email('default');
-      $email->transport('mailjet')
+      $email->transport('default')
         ->from(['vooderbot@vooders.com' => 'Vooders.com'])
         ->to($to)
         ->subject('Confirm your email address')

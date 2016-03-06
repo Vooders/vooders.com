@@ -41,8 +41,7 @@ class BattleTagsController extends AppController
    * Add method
    *
    */
-  public function add()
-  {
+  public function add(){
   	$battleTag = $this->BattleTags->newEntity();
   	if ($this->request->is('post')) {
   		$battleTag = $this->BattleTags->patchEntity($battleTag, $this->request->data);

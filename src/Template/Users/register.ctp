@@ -38,17 +38,8 @@
     
     echo $this->Form->input('email');
     
-    echo $this->Form->input('title');
-    
-    echo $this->Form->input('name_first', ['label' => 'First Name']);
-    
-    echo $this->Form->input('name_middle', ['label' => 'Middle Name']);
-    
-    echo $this->Form->input('name_last', ['label' => 'Last Name']);
-    
     echo $this->Form->button(__('Submit'), [
-        'disabled' => true,
-        'class' => 'submitButton'
+        'class' => 'large button'
       ]);
     
     echo $this->Form->end();

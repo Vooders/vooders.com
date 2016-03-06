@@ -4,25 +4,28 @@ $loggedIn = false;
 if ($session->read('User.id') > 0)
   $loggedIn = true;
   ?>
-<nav class="primary-nav">
-  <ul class="">
-    <li class="primary-nav__item">
-      <h1>VOODERS.COM</h1>
-    </li>
-  </ul>
-  <ul class="primary-nav_group right">   
-    <?php if($loggedIn) : ?> 
-      <li class="primary-nav__item">
+<nav class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu" data-dropdown-menu>
+      <a href="/">
+        <li class="menu-text">VOODERS.COM</li>
+      </a>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+     <ul class="menu" data-dropdown-menu>
+      <?php if($loggedIn) : ?> 
+      <li>
       <?=
         $this->Html->link(__('My Profile'), [
           'controller' => 'Users',
-          'action' => 'profile' , $session->read('User.id')
+          'action' => 'profile' 
         ],[
           'class' => 'primary-nav__anchor'
         ])
       ?>
       </li>
-      <li class="primary-nav__item">
+      <li>
         <?= 
           $this->Html->link(__('Log Out'), [
             'controller' => 'Users',
@@ -34,7 +37,7 @@ if ($session->read('User.id') > 0)
       </li>
       
     <?php else: ?>
-       <li class="primary-nav__item">
+       <li>
         <?= 
           $this->Html->link(__('Register'), [
             'controller' => 'Users',
@@ -44,17 +47,21 @@ if ($session->read('User.id') > 0)
         ]) 
         ?>
       </li>
-      <li class="primary-nav__item">
-      <?= 
+      <li><?= 
         $this->Html->link(__('Log In'), [
           'controller' => 'Users',
           'action' => 'login'
         ],[
           'class' => 'primary-nav__anchor'
         ]) 
-      ?>
-    </li>
+      ?></li>
       <?php endif; ?>
+    </ul>
+  </div>
+ 
+
+  <ul class="dropdown menu">   
+    
       
   </ul>
 </nav>

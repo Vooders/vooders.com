@@ -1,5 +1,5 @@
-<div class="wrap">
-  <div class="push-col1 col10 center-text">
+<div class="small-12 large-6 columns">
+  <div class="">
     <h2>Request A Password reset</h2>
     <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>   
@@ -11,7 +11,7 @@
         'label' => __('Email Address')
       ]) ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')); ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'button']); ?>
     <?= $this->Form->end() ?>
   </div>
 </div>

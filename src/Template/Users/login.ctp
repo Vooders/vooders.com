@@ -1,5 +1,5 @@
-<div class="wrap">
-  <div class="push-col1 col10 center-text">
+<div class="small-12 large-6 columns">
+  <div class="">
     <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
     <fieldset>
@@ -11,21 +11,34 @@
       <br/>
       <?= $this->Form->input('password') ?>
     </fieldset>
-    <?= $this->Form->button(__('Login')); ?>
+  </div>
+  <div class="row">
+    <?= $this->Form->button(__('Login'),[
+        'class' => 'large button'
+    ]); ?>
     <?= $this->Form->end() ?>
-    <?= $this->Html->link('Register', [
+
+    
+  </div>
+  <div class="row">
+  <?= $this->Html->link('Register', [
       'controller' => 'users',
       'action' => 'register'
+    ], [
+      'class' => 'tiny button'
     ]) ?>
-    <br/>
     <?= $this->Html->link('Forgot Password?', [
       'controller' => 'users',
       'action' => 'requestPasswordReset'
+    ], [
+      'class' => 'tiny button'
     ]) ?>
     <br/>
     <?= $this->Html->link('Forgot Username?', [
       'controller' => 'users',
       'action' => 'forgotUsername'
+    ], [
+      'class' => 'tiny button'
     ]) ?>
   </div>
 </div>

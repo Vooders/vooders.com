@@ -57,10 +57,14 @@ class User extends Entity
         )
     )
   );
-		
+	
+	protected function _getPrimaryEmail(){
+
+	}
+
 	protected function _setPassword($value)
-    {
-        $hasher = new DefaultPasswordHasher();
-        return $hasher->hash($value);
-    }
+  {
+    $hasher = new DefaultPasswordHasher();
+    return $hasher->hash($value);
+  }
 }

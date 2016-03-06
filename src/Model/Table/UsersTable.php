@@ -24,20 +24,23 @@ class UsersTable extends Table
      */
     public function initialize(array $config)
     {
-        parent::initialize($config);
+      parent::initialize($config);
 
-        $this->table('users');
-        $this->displayField('id');
-        $this->primaryKey('id');
+      $this->table('users');
+      $this->displayField('id');
+      $this->primaryKey('id');
 
-        $this->addBehavior('Timestamp');
+      $this->addBehavior('Timestamp');
 
-        $this->hasMany('UserContacts', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->hasMany('UserEmails', [
-            'foreignKey' => 'user_id'
-        ]);
+      $this->hasMany('UserContacts', [
+          'foreignKey' => 'user_id'
+      ]);
+      $this->hasMany('UserEmails', [
+          'foreignKey' => 'user_id'
+      ]);
+      $this->hasOne('BattleTags', [
+          'foreignKey' => 'user_id'
+      ]);
     }
 
     /**
@@ -48,62 +51,47 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+      $validator
+          ->add('id', 'valid', ['rule' => 'numeric'])
+          ->allowEmpty('id', 'create');
 
-        $validator
-            ->add('preferred_contact', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('preferred_contact');
+      $validator
+          ->add('preferred_contact', 'valid', ['rule' => 'numeric'])
+          ->allowEmpty('preferred_contact');
 
-        $validator
-            ->allowEmpty('name_first');
+      $validator
+          ->add('account_status', 'valid', ['rule' => 'numeric'])
+          ->requirePresence('account_status', 'create')
+          ->notEmpty('account_status');
 
-        $validator
-            ->allowEmpty('name_middle');
+      $validator
+          ->requirePresence('username', 'create')
+          ->notEmpty('username');
 
-        $validator
-            ->allowEmpty('name_last');
+      $validator
+          ->requirePresence('password', 'create')
+          ->notEmpty('password');
 
-        $validator
-            ->add('account_status', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('account_status', 'create')
-            ->notEmpty('account_status');
+      $validator
+          ->add('last_access', 'valid', ['rule' => 'datetime'])
+          ->allowEmpty('last_access');
 
-        $validator
-            ->requirePresence('username', 'create')
-            ->notEmpty('username');
+      $validator
+          ->allowEmpty('reset_hash');
 
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+      $validator
+          ->add('reset_time', 'valid', ['rule' => 'datetime'])
+          ->allowEmpty('reset_time');
 
-        $validator
-            ->add('last_access', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('last_access');
+      $validator
+          ->add('created_by', 'valid', ['rule' => 'numeric'])
+          ->allowEmpty('created_by');
 
-        $validator
-            ->allowEmpty('avatar');
+      $validator
+          ->add('modified_by', 'valid', ['rule' => 'numeric'])
+          ->allowEmpty('modified_by');
 
-        $validator
-            ->allowEmpty('biography');
-
-        $validator
-            ->allowEmpty('reset_hash');
-
-        $validator
-            ->add('reset_time', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('reset_time');
-
-        $validator
-            ->add('created_by', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('created_by');
-
-        $validator
-            ->add('modified_by', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('modified_by');
-
-        return $validator;
+      return $validator;
     }
 
     /**

@@ -26,8 +26,12 @@ $cakeDescription = 'Vooders.com';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-		<?= $this->Html->css('style.min.css') ?>
 
+    <?= $this->Html->css('foundation.css') ?>
+    <?= $this->Html->css('foundation-rtl.css') ?>
+	<?= $this->Html->css('foundation-flex.css') ?>
+
+    <?= $this->Html->script('foundation') ?>
     <?= $this->Html->script('jquery-2.1.4.min') ?>
     <?= $this->Html->script('global') ?>
 

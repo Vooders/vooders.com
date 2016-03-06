@@ -13,8 +13,8 @@
 $session = $this->request->session();
 
 ?>
-<section style="padding: 20px 80px; max-width: 1800px;">
-  <div class="search-form" style="max-width: 600px;">
+<div style="row">
+  <div class="small-12 large-4 columns">
     <h3><?= __('Member Directory') ?></h3>
     <p><?= __('Search for a member by name or by company') ?></p>
     <?= $this->Form->create(null, [
@@ -35,12 +35,15 @@ $session = $this->request->session();
     <?= $this->Form->end() ?>
     <hr/>
   </div>
-  <div class="users index ">
-    <table cellpadding="0" cellspacing="0">
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+  <h3>All users on system</h3>
+    <table>
       <thead>
         <tr>
 					<th><?= $this->Paginator->sort('username') ?></th>
-          <th><?= $this->Paginator->sort('name') ?></th>
           <th><?= $this->Paginator->sort('date_joined', ['label' => 'Member Since']) ?></th>
           <th><?= $this->Paginator->sort('last_access') ?></th>
           <th class="actions"><?= __('Actions') ?></th>
@@ -50,7 +53,6 @@ $session = $this->request->session();
         <?php foreach ($users as $user): ?>
         <tr>
 					<td><?= $user->username ?></td>
-          <td><?= $user->name_first.' '.$user->name_last ?></td>
           <td><?= $user->created ?></td>
           <td><?= $user->last_access ?></td>
           <td class="actions">
@@ -62,13 +64,16 @@ $session = $this->request->session();
         <?php endforeach; ?>
       </tbody>
     </table>
-    <div class="paginator">
-      <ul class="pagination">
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
-        <?= $this->Paginator->numbers() ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?>
-      </ul>
-      <p><?= $this->Paginator->counter() ?></p>
-    </div>
   </div>
-</section>
+</div>
+
+<div class="row">
+  <ul class="pagination">
+    <?= $this->Paginator->prev('< ' . __('previous')) ?>
+    <?= $this->Paginator->numbers() ?>
+    <?= $this->Paginator->next(__('next') . ' >') ?>
+  </ul>
+  <p><?= $this->Paginator->counter() ?></p>
+</div>
+
+

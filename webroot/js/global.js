@@ -11,6 +11,18 @@
  */
 $(document).ready(function () {
 
+ /**
+	* Foundation declarations
+	*/
+	$(document).foundation();
+	// Top nav bar
+	topMenu = new Foundation.Revael($('#topMenu'));
+	// Profile page
+	addEmail = new Foundation.Revael($('#addEmail'));
+	addBattleTag = new Foundation.Revael($('#addBattleTag'));
+
+
+
 	// Check if the entered username exists in the database
 	$('.js-users').blur(function(){
 		$.ajax({

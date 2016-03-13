@@ -1,3 +1,5 @@
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `battle_tags`
 --
@@ -29,6 +31,69 @@ CREATE TABLE IF NOT EXISTS `failed_logins` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hearthstone_cards`
+--
+-- This table holds all of the cards in Hearthstone
+-- it is populated from an API
+--
+
+CREATE TABLE IF NOT EXISTS `hearthstone_cards`(
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `card_id` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `card_set` varchar(100) DEFAULT NULL,
+  `type` varchar(100) DEFAULT NULL,
+  `faction` varchar(100) DEFAULT NULL,
+  `rarity` varchar(100) DEFAULT NULL,
+  `cost` int(100) DEFAULT NULL,
+  `attack` int(100) DEFAULT NULL,
+  `health` int(100) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `elite` varchar(100) DEFAULT NULL,
+  `img` varchar(500) DEFAULT NULL,
+  `img_gold` varchar(500) DEFAULT NULL,
+  `collectible` tinyint(1) DEFAULT NULL,
+  `player_class` varchar(100) DEFAULT NULL,
+  `locale` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hearthstone_decks`
+--
+
+CREATE TABLE IF NOT EXISTS `hearthstone_decks_cards`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hearthstone_card_id` int(11) NOT NULL,
+  `hearthstone_deck_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hearthstone_decks`
+--
+
+CREATE TABLE IF NOT EXISTS `hearthstone_decks`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `complete` tinyint(1) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+ALTER TABLE `hearthstone_decks` ADD COLUMN `name` varchar(50) NOT NULL AFTER `user_id`;
 
 -- --------------------------------------------------------
 
@@ -106,4 +171,11 @@ CREATE TABLE IF NOT EXISTS `user_emails` (
   `modified_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_levels`
+--
 

@@ -10,7 +10,8 @@ use Cake\Event\Event;
 use Cake\I18n\Time;
 use Cake\Mailer\Email;
 use Cake\Utility\Security;
-use Cake\Auth\DefaultPasswordHasher;;
+use Cake\Auth\DefaultPasswordHasher;
+
 class UsersController extends AppController
 {
   /**-- Initialisation Methods --**/
@@ -48,7 +49,7 @@ class UsersController extends AppController
   **/
   public function profile(){
     $userId =  $this->request->session()->read('User.id');
- 
+
     $user = $this->Users->get($userId, [
       'contain' => [
         'UserContacts', 

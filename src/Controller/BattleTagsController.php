@@ -42,20 +42,18 @@ class BattleTagsController extends AppController
    *
    */
   public function add(){
+    $this->autoRender = false;
   	$battleTag = $this->BattleTags->newEntity();
   	if ($this->request->is('post')) {
   		$battleTag = $this->BattleTags->patchEntity($battleTag, $this->request->data);
   		$battleTag->user_id = $this->request->session()->read('User.id');
   		if ($this->BattleTags->save($battleTag)) {
   			$this->Flash->success(__('The battle tag has been saved.'));
-  			return $this->redirect(['action' => 'index']);
+  			return $this->redirect(['controller' => 'Users', 'action' => 'profile']);
   		} else {
   			$this->Flash->error(__('The battle tag could not be saved. Please, try again.'));
   		}
   	}
-  	$users = $this->BattleTags->Users->find('list', ['limit' => 200]);
-  	$this->set(compact('battleTag', 'users'));
-  	$this->set('_serialize', ['battleTag']);
   }
 
   /**

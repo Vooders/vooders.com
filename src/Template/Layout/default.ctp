@@ -30,9 +30,13 @@ $cakeDescription = 'Vooders.com';
     <?= $this->Html->css('foundation.css') ?>
     <?= $this->Html->css('foundation-rtl.css') ?>
 	<?= $this->Html->css('foundation-flex.css') ?>
+    <?= $this->Html->css('style.min.css') ?>
 
+    <?= $this->Html->script('vendor/jquery.min') ?>
+    
+    <?= $this->Html->script('vendor/what-input.min') ?>
     <?= $this->Html->script('foundation') ?>
-    <?= $this->Html->script('jquery-2.1.4.min') ?>
+    
     <?= $this->Html->script('global') ?>
 
     <?= $this->fetch('meta') ?>

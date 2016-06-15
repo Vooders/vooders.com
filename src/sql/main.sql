@@ -1,9 +1,7 @@
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `battle_tags`
 --
-
 CREATE TABLE IF NOT EXISTS `battle_tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -13,14 +11,10 @@ CREATE TABLE IF NOT EXISTS `battle_tags` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `failed_logins`
 --
-
 CREATE TABLE IF NOT EXISTS `failed_logins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
@@ -30,17 +24,13 @@ CREATE TABLE IF NOT EXISTS `failed_logins` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `hearthstone_cards`
 --
 -- This table holds all of the cards in Hearthstone
 -- it is populated from an API
 --
-
 CREATE TABLE IF NOT EXISTS `hearthstone_cards`(
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `card_id` varchar(100) NOT NULL,
@@ -61,14 +51,10 @@ CREATE TABLE IF NOT EXISTS `hearthstone_cards`(
   `locale` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `hearthstone_decks`
 --
-
 CREATE TABLE IF NOT EXISTS `hearthstone_decks_cards`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hearthstone_card_id` int(11) NOT NULL,
@@ -77,14 +63,10 @@ CREATE TABLE IF NOT EXISTS `hearthstone_decks_cards`(
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `hearthstone_decks`
 --
-
 CREATE TABLE IF NOT EXISTS `hearthstone_decks`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -94,13 +76,10 @@ CREATE TABLE IF NOT EXISTS `hearthstone_decks`(
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 ALTER TABLE `hearthstone_decks` ADD COLUMN `name` varchar(50) NOT NULL AFTER `user_id`;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `hots_logs`
 --
-
 CREATE TABLE IF NOT EXISTS `hots_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -112,13 +91,10 @@ CREATE TABLE IF NOT EXISTS `hots_logs` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `users`
 --
-
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `preferred_contact` int(11) DEFAULT NULL COMMENT 'The id of the preferred contact',
@@ -134,14 +110,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `user_contacts`
 --
-
 CREATE TABLE IF NOT EXISTS `user_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -152,13 +124,10 @@ CREATE TABLE IF NOT EXISTS `user_contacts` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `user_emails`
 --
-
 CREATE TABLE IF NOT EXISTS `user_emails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -171,11 +140,3 @@ CREATE TABLE IF NOT EXISTS `user_emails` (
   `modified_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_levels`
---
-

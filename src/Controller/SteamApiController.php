@@ -5,7 +5,6 @@ use App\Controller\AppController;
 use Cake\Network\Http\Client;
 /**
  * Steam API Controller
- *
  */
 class SteamApiController extends AppController{
 
@@ -36,6 +35,36 @@ class SteamApiController extends AppController{
 	}
 
 
+	/**
+	 * Makes a request to the steam API
+	 * Return PHP object of results
+	 */
+	private function makeRequest($url, $steamId = null) {
+		if($steamId === null) $steamId = $this->myId;
+		$http = new Client();
+		$response = $http->get($url, [
+			'key' => $this->key,
+			'steamid' => $steamId,
+			'format' => 'json'
+		]);
+
+		return json_decode($response->body);
+	}
+
+
+	public function getFriendsList($steamId = null){
+		$this->autoRender = false;
+		if($steamId === null) $steamId = $this->myId;
+		$http = new Client();
+		$response = $http->get('http://api.steampowered.com/ISteamUser/GetFriendList/v0001/', [
+			'key' => $this->key,
+			'steamid' => $steamId,
+			'relationship' => 'friend'
+		]);
+		debug($response);
+	}
+
+
 	public function getPlayerSummary($steamId = null){
 		$this->autoRender = false;
 		if($steamId === null) $steamId = $this->myId;
@@ -47,22 +76,5 @@ class SteamApiController extends AppController{
 		]);
 		$out = json_decode($response->body);
 		debug($out);
-	}
-
-
-	/**
-	 * Makes a request to the steam API
-	 * Return PHP object of results
-	 */
-	private function makeRequest($url, $steamId = null) {
-		if($steamId === null) $steamId = $this->myId;
-		$http = new Client();
-		$response = $http->get($url, [
-			'key' => $this->key,
-			'steamids' => $steamId,
-			'format' => 'json'
-		]);
-
-		return json_decode($response->body);
 	}
 }

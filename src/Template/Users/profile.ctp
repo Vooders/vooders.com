@@ -33,7 +33,6 @@
 					</th>
 					<th>
 						<a data-open="addEmail">Add Email</a>
-						
 					</th>
 				</tr>
 			</thead>	
@@ -53,7 +52,7 @@
 	</div>
 </div>
 <div class="reveal" id="addEmail" data-reveal>
-  <h2><?= __('Add a new contact method') ?></h2>
+  <h2><?= __('Add a new email address') ?></h2>
 	<?= $this->Form->create(null, [
 		'url' => [
 			'controller' => 'Users',
@@ -64,7 +63,7 @@
 		'label' => 'Name: e.g work'
 	]) ?>
 	<?= $this->Form->input('contact', [
-		'label' => 'Email, Tel or Skype name.'
+		'label' => 'Email'
 	]) ?>
 	<?= $this->Form->submit() ?>
 	<?= $this->Form->end() ?>

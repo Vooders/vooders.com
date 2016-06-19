@@ -93,6 +93,18 @@ CREATE TABLE IF NOT EXISTS `hots_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 --
+-- Tables for SteamIds
+--
+CREATE TABLE IF NOT EXISTS `steam_ids` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `steam_id` int(30) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+--
 -- Table structure for table `users`
 --
 CREATE TABLE IF NOT EXISTS `users` (

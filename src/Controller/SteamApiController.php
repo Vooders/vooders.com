@@ -5,11 +5,14 @@ use App\Controller\AppController;
 use Cake\Network\Http\Client;
 /**
  * Steam API Controller
+ * Changing things
  */
 class SteamApiController extends AppController{
 
-	private $key;
-	private $myId;
+	// Class variables
+	private $key; 	// The steam API key
+	private $myId;	// My steam ID (for testing)
+
 
 	public function initialize(){
 		parent::initialize();

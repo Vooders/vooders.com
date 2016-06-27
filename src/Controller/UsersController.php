@@ -17,7 +17,7 @@ class UsersController extends AppController
     /**-- Initialisation Methods --**/
     /**
     * Before Filter
-    *
+    * // Changes for git
     **/
     public function beforeFilter(Event $event){
         parent::beforeFilter($event);
@@ -190,7 +190,7 @@ class UsersController extends AppController
         }
     }
     /**
-    * Emails a user thier username. 
+    * Emails a user their username.
     * If they provide a valid password and email address
     *
     **/

@@ -1,0 +1,20 @@
+.text-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-white {
+  color: $white;
+}
+
+a,
+.link {
+  color: $white;
+
+  &:hover {
+    color: $yellow;
+  }
+}

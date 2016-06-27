@@ -1,8 +1,37 @@
+.title-bar {
+	height: 100px;
+	background-color: $black!important;
+	border-bottom: 3px solid $border;
+}
+
+.title-bar-title {
+	font-size: 30px;
+
+	&:hover {
+		color: $white;
+	}
+}
+
+.title-bar-right {
+	height: 100%;
+}
+
+.menu-container {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
 .nav-user-menu{
-	max-width: 150px;
+	left: auto!important;
+	top: 97px!important;
+	right: 0!important;
 	background-color: $black;
 	padding: 0;
 	padding-top: 5px;
+	border: 0;
+	border-bottom: 3px solid $border;
+	border-left: 3px solid $border;
 }
 
 .nav-user-menu__anchor {
@@ -12,4 +41,11 @@
 .menu-li {
  	text-align: right;
  	background-color: $grey;
+	border-top: 1px solid $border;
+}
+
+.top-bar {
+	background-color: #222;
+	height: 25px;
+	border-bottom: 3px solid $border;
 }

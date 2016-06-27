@@ -99,8 +99,7 @@ class UsersController extends AppController
     /**
     * Save our user details into the session.
     * This allows us to access the data from anywhere.
-    *
-    **/
+    */
     private function _sessionSetUp($user){
         $session = $this->request->session();
         $session->write('User.username', $user['username']);
@@ -109,9 +108,8 @@ class UsersController extends AppController
 
     /**
     * The logout function
-    * Logs the user out and destroys the session 
-    *
-    **/
+    * Logs the user out and destroys the session
+    */
     public function logout(){
         $session = $this->request->session();
         $session->destroy();

@@ -12,8 +12,10 @@
 // Simply call in all the style sheets to build the css
 
 @import "variables";
+@import "fonts";
 @import "nav-bar";
 @import "padding";
 @import "margin";
 @import "helpers";
 @import "typography";
+@import "heros";

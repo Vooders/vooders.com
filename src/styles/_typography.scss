@@ -10,11 +10,40 @@
   color: $white;
 }
 
+.exo {
+  font-family: $exo;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bigger {
+  font-size: 1.5rem;
+}
+
 a,
 .link {
+  font-family: $paragraph;
   color: $white;
+  cursor: pointer;
 
+  &.black{
+    color: $black;
+  }
+  &:focus {
+    color: $white;
+  }
   &:hover {
     color: $yellow;
   }
+}
+
+p {
+  font-family: $paragraph;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: $exo;
 }

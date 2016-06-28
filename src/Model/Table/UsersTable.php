@@ -22,25 +22,27 @@ class UsersTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
-      parent::initialize($config);
-
-      $this->table('users');
-      $this->displayField('id');
-      $this->primaryKey('id');
-
-      $this->addBehavior('Timestamp');
-
-      $this->hasMany('UserContacts', [
+    public function initialize(array $config){
+        parent::initialize($config);
+        
+        $this->table('users');
+        $this->displayField('id');
+        $this->primaryKey('id');
+        
+        $this->addBehavior('Timestamp');
+        
+        $this->hasMany('UserContacts', [
           'foreignKey' => 'user_id'
-      ]);
-      $this->hasMany('UserEmails', [
+        ]);
+        $this->hasMany('UserEmails', [
           'foreignKey' => 'user_id'
-      ]);
-      $this->hasOne('BattleTags', [
+        ]);
+        $this->hasMany('BattleTags', [
           'foreignKey' => 'user_id'
-      ]);
+        ]);
+        $this->hasMany('SteamIds', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**

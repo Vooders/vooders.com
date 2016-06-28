@@ -15,9 +15,9 @@ if ($session->read('User.id') > 0)
         </div>
         <div class="row float-right">
             <?php if($loggedIn): ?>
-                <p class="text-right"><?= $session->read('User.username') ?></p>
+                <p class="text-right exo"><?= $session->read('User.username') ?></p>
             <?php else: ?>
-                <p class="text-right">Not Logged In</p>
+                <p class="text-right exo">Not Logged In</p>
             <?php endif; ?>
         </div>
         <div class="row">
@@ -79,7 +79,10 @@ if ($session->read('User.id') > 0)
 <nav class="top-bar">
     <div class="wrap text-white">
         <?php if($loggedIn): ?>
-            <?= $this->Html->link('API Keys', '#'); ?>
+            <?= $this->Html->link('API Keys', [
+                'controller' => 'Users',
+                'action' => 'api_keys'
+            ]); ?>
             &nbsp;&nbsp;
             <?= $this->Html->link('Steam', '#'); ?>
             &nbsp;&nbsp;

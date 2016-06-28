@@ -1,0 +1,30 @@
+{
+  "name": "vooders.com",
+  "version": "1.0.0",
+  "description": "Vooders.com",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2"
+  },
+  "devDependencies": {
+    "gulp-notify": "^2.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vooders/vooders.com.git"
+  },
+  "author": "Kev Wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vooders/vooders.com/issues"
+  },
+  "homepage": "https://github.com/Vooders/vooders.com#readme"
+}

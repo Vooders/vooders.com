@@ -15,6 +15,8 @@ use Cake\Auth\DefaultPasswordHasher;
 class UsersController extends AppController
 {
     /**-- Initialisation Methods --**/
+    
+    
     /**
     * Before Filter
     * // Changes for git
@@ -39,6 +41,17 @@ class UsersController extends AppController
     **/
     public function isAuthorized($user){
         return true; 
+    }
+
+    public function apiKeys(){
+        $userId = $this->request->session()->read('User.id');
+        $user = $this->Users->get($userId, [
+            'contain' => [
+                'BattleTags',
+                'SteamIds'
+            ]
+        ]);
+        $this->set(compact('user'));
     }
 
     /**

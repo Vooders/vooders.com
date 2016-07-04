@@ -39,7 +39,7 @@
 		</a>
 	</div>
 	<div class="small-3 columns">
-		<a href="https://www.couchtuner.fr/" target="_blank">
+		<a href="http://www.couchtuner.fr/" target="_blank">
 			<img src="/img/tv-home/couchtuner.png" width="100%"/>
 		</a>
 	</div>

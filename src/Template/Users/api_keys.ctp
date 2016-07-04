@@ -3,8 +3,8 @@
  * 
  */
 //debug($user);die;
-$battleTags = $user->battle_tags;
-$steamIds = $user->steam_ids;
+$battleTag = $user->battle_tag;
+$steamId = $user->steam_id;
 ?>
 <div class="row api-hero">
     <div class="wrap">
@@ -24,10 +24,8 @@ $steamIds = $user->steam_ids;
         <div class="small-12 medium-5 columns">
             <div class="rel-box">
                 <div class="sit-bottom">
-                    <?php if($battleTags): ?>
-                        <?php foreach($battleTags as $tag): ?>
-                            <p class="exo bigger"><?= $tag->tag ?></p>
-                        <?php endforeach; ?>
+                    <?php if($battleTag): ?>
+                        <p class="exo bigger"><?= $battleTag->tag ?></p>
                     <?php else: ?>
                         <p>You have not added a BattleTag</p>
                     <?php endif; ?>
@@ -38,9 +36,16 @@ $steamIds = $user->steam_ids;
             <div class="rel-box">
                 <div class="sit-bottom right">
                     <p>
-                        <span class="link black exo js-reveal" data-class="new-tag">ADD NEW</span>
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <span class="link black exo js-reveal" data-class="more-info">MORE INFO</span>
+                        <?php if($battleTag): ?>
+                            <span class="link black exo js-reveal" data-class="">GAME DATA</span>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span class="link black exo js-reveal" data-class="more-btag-info">MORE INFO</span>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span class="link black exo">REMOVE</span>
+                        <?php else: ?>
+                            <span class="link black exo js-reveal" data-class="new-tag">ADD BATTLETAG</span>
+                        <?php endif; ?>
+
                     </p>
                 </div>
             </div>
@@ -50,17 +55,10 @@ $steamIds = $user->steam_ids;
         </div>
     </div>
     <div class="row">
-        <div class="small-12 medium-9 columns pad-top">
-            <div class="more-info" style="display: none">
-                <h4>More Info</h4>
-                <?php if($battleTags): ?>
-                    <?php if($battleTags): ?>
-                        <?php foreach($battleTags as $tag): ?>
-                            <p>Tag:&nbsp;<?= $tag->tag ?>&nbsp;&nbsp;Added:&nbsp;<?= $tag->created ?></p>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>You have not added a BattleTag</p>
-                    <?php endif; ?>
+        <div class="small-12 medium-9 columns pad--none">
+            <div class="more-btag-info" style="display: none">
+                <?php if($battleTag): ?>
+                    <p>Tag:&nbsp;<?= $battleTag->tag ?>&nbsp;&nbsp;Added:&nbsp;<?= $battleTag->created ?></p>
                 <?php else: ?>
                     <p>You have not added a BattleTag</p>
                 <?php endif; ?>
@@ -102,7 +100,7 @@ $steamIds = $user->steam_ids;
         <div class="small-12 medium-5 columns">
             <div class="rel-box">
                 <div class="sit-bottom">
-                    <?php if($steamIds): ?>
+                    <?php if($steamId): ?>
                         <p></p>
                     <?php else: ?>
                         <p>You have not added a Steam ID</p>
@@ -114,9 +112,13 @@ $steamIds = $user->steam_ids;
             <div class="rel-box">
                 <div class="sit-bottom right">
                     <p>
-                        <span class="link black exo">ADD NEW</span>
+                        <?php if($steamId): ?>
+                        <span class="link black exo js-reveal" data-class="">GAME DATA</span>
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <span class="link black exo">MORE INFO</span>
+                        <span class="link black exo js-reveal" data-class="more-steam-info">MORE INFO</span>
+                        <?php else: ?>
+                            <span class="link black exo js-reveal" data-class="new-steam-id">ADD STEAM ID</span>
+                        <?php endif; ?>
                     </p>
                 </div>
             </div>

@@ -37,10 +37,10 @@ class UsersTable extends Table
         $this->hasMany('UserEmails', [
           'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('BattleTags', [
+        $this->hasOne('BattleTags', [
           'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('SteamIds', [
+        $this->hasOne('SteamIds', [
             'foreignKey' => 'user_id'
         ]);
     }

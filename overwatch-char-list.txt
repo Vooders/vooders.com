@@ -1,0 +1,34 @@
+3 Offense characters
+
+    3.1 Genji
+    3.2 McCree *
+    3.3 Pharah
+    3.4 Reaper
+    3.5 Soldier: 76 
+    3.6 Tracer
+
+4 Defense characters
+
+    4.1 Bastion
+    4.2 Hanzo
+    4.3 Junkrat *
+    4.4 Mei
+    4.5 Torbjörn 
+    4.6 Widowmaker
+
+5 Tank characters
+
+    5.1 D.Va
+    5.2 Reinhardt
+    5.3 Roadhog
+    5.4 Winston
+    5.5 Zarya
+
+6 Support characters
+
+    6.1 Lúcio *
+    6.2 Mercy
+    6.3 Symmetra
+    6.4 Zenyatta
+    6.5 Ana
+

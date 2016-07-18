@@ -16,11 +16,9 @@ class UsersController extends AppController
 {
     /**-- Initialisation Methods --**/
     
-    
     /**
-    * Before Filter
-    * // Changes for git
-    **/
+     * Before Filter
+     */
     public function beforeFilter(Event $event){
         parent::beforeFilter($event);
         $this->Auth->allow([
@@ -36,9 +34,9 @@ class UsersController extends AppController
     }
 
     /**
-    * Is Authorized Method
-    *
-    **/
+     * Is Authorized Method
+     *
+     */
     public function isAuthorized($user){
         return true; 
     }
@@ -55,10 +53,10 @@ class UsersController extends AppController
     }
 
     /**
-    * Profile method
-    *
-    *
-    **/
+     * Profile method
+     *
+     *
+     */
     public function profile(){
     $userId =  $this->request->session()->read('User.id');
 
@@ -74,12 +72,11 @@ class UsersController extends AppController
     }
 
     /**
-    * The login method
-    * 
-    * Logs the user in.
-    * Then triggers session setup.
-    *
-    **/
+     * The login method
+     * 
+     * Logs the user in.
+     * Then triggers session setup.
+     */
     public function login(){ 
         if ($this->request->is('post')){
             $user = $this->Auth->identify();  
@@ -110,9 +107,9 @@ class UsersController extends AppController
     }
 
     /**
-    * Save our user details into the session.
-    * This allows us to access the data from anywhere.
-    */
+     * Save our user details into the session.
+     * This allows us to access the data from anywhere.
+     */
     private function _sessionSetUp($user){
         $session = $this->request->session();
         $session->write('User.username', $user['username']);
@@ -120,9 +117,9 @@ class UsersController extends AppController
     }
 
     /**
-    * The logout function
-    * Logs the user out and destroys the session
-    */
+     * The logout function
+     * Logs the user out and destroys the session
+     */
     public function logout(){
         $session = $this->request->session();
         $session->destroy();
@@ -130,9 +127,9 @@ class UsersController extends AppController
     }
 
     /**
-    * Request Password Reset Method
-    *
-    **/
+     * Request Password Reset Method
+     *
+     */
     public function requestPasswordReset(){
         if($this->request->is('post')){
             $this->loadModel('UserEmails');
@@ -165,9 +162,9 @@ class UsersController extends AppController
         }
     }
     /**
-    * Reset Password
-    *
-    **/
+     * Reset Password
+     *
+     */
     public function resetPassword($hash=null, $id=null)
     {
         $user = $this->Users->get($id);
@@ -201,10 +198,10 @@ class UsersController extends AppController
         }
     }
     /**
-    * Emails a user their username.
-    * If they provide a valid password and email address
-    *
-    **/
+     * Emails a user their username.
+     * If they provide a valid password and email address
+     *
+     */
     public function forgotUsername(){
         if($this->request->is('post')){
             $data = $this->request->data;
@@ -234,14 +231,14 @@ class UsersController extends AppController
     }
 
     /**
-    * Adds a user to the contacts of the logged in user
-    *
-    **/
+     * Adds a user to the contacts of the logged in user
+     *
+     */
     public function newContact($id = null){
         $this->autoRender = false;
         $userId = $this->request->session()->read('User.id');
         $user = $this->Users->get($userId, [
-        'contain' => 'UserContacts'
+            'contain' => 'UserContacts'
         ]);
         $present = false;
         foreach ($user->users_contacts as $c) {
@@ -264,9 +261,9 @@ class UsersController extends AppController
     }
 
     /**
-    * Removes a contact from the contacts of the logged in user
-    *
-    **/
+     * Removes a contact from the contacts of the logged in user
+     *
+     */
     public function removeContact($id = null){
         $this->request->allowMethod(['post', 'delete']);
         $userId = $this->request->session()->read('User.id');

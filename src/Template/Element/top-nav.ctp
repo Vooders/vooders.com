@@ -38,6 +38,16 @@ if ($session->read('User.id') > 0)
                             </li>
                             <li class="menu-li">
                                 <?=
+                                    $this->Html->link(__('Passwords'), [
+                                        'controller' => 'PasswordGenerator',
+                                        'action' => 'index'
+                                    ],[
+                                        'class' => 'nav-user-menu__anchor'
+                                    ])
+                                ?>
+                            </li>
+                            <li class="menu-li">
+                                <?=
                                     $this->Html->link(__('Log Out'), [
                                         'controller' => 'Users',
                                         'action' => 'logout'

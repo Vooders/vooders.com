@@ -375,7 +375,7 @@ class UsersController extends AppController
                     PHP_EOL .
                     ' -Vooderbot';
         $email = new Email('default');
-        $email->transport('default')
+        $email->transport('mailjet')
             ->from(['vooderbot@vooders.com' => 'Vooders.com'])
             ->to($to)
             ->subject('Confirm your email address')

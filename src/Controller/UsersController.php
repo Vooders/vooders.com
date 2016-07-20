@@ -406,7 +406,7 @@ class UsersController extends AppController
                 $this->UserEmails->save($email);
                 $this->_autoLogin($user);
                 $this->Flash->success(__('Your email has been verified and your account is now active.'));
-                $this->redirect(['controller' => 'Users', 'action' => 'index']);
+                $this->redirect(['controller' => 'Users', 'action' => 'profile']);
             } else {
                 // The hash is wrong, don't accept
                 $this->Flash->error(__('The link is incorrect. Please try again'));

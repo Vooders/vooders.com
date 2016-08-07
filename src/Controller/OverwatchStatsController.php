@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Network\Http\Client;
 /**
  * OverwatchStats Controller
  *
@@ -10,6 +10,63 @@ use App\Controller\AppController;
  */
 class OverwatchStatsController extends AppController
 {
+    private $user;
+    private $battleTag;
+
+    /**
+     * Get the user and format the battle tag
+     */
+    public function initialize() {
+        parent::initialize();
+        $this->loadModel('Users');
+
+        $this->baseUrl = 'https://api.lootbox.eu/pc/eu/';
+        $this->http = new Client();
+
+        $userID = $this->request->session()->read('User.id');
+        $this->user = $this->Users->get($userID, [
+            'contain' => 'BattleTags'
+        ]);
+        $tag = $this->user->battle_tag->tag;
+        $tag = str_replace('#', '-', $tag);
+        $this->battleTag = $tag;
+    }
+
+    public function test(){
+        debug($this->battleTag);die;
+    }
+
+    public function getStats(){
+        $url = $this->baseUrl.$this->battleTag.'/quick-play/hero/Junkrat/';
+        $response = $this->http->get($url);
+
+        $stats = json_decode($response->body);
+
+        if(!isset($stats->statusCode)){
+            $this->loadModel('OverwatchJunkratStats');
+
+            $hero = $this->OverwatchJunkratStats->newEntity();
+
+            $array = [];
+            foreach ($stats->Junkrat as $name => $stat){
+                $array[$name] = $stat;
+            }
+
+            $hero = $this->OverwatchJunkratStats->patchEntity($hero, $array, ['validate' => false]);
+debug($hero);
+            if($this->OverwatchJunkratStats->save($hero)){
+                echo 'saved';
+            } else {
+                echo 'error';
+            }
+        } else {
+            debug($stats);
+        }
+
+    }
+
+
+
     /**
      *
      */
@@ -20,6 +77,8 @@ class OverwatchStatsController extends AppController
         ]);
         
     }
+
+
 
     /**-- CRUD Methods --**/
 

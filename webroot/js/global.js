@@ -11,7 +11,18 @@
  */
 $(document).ready(function () {
 
- /**
+	$('.js-menu').click(function(){
+		var menu = $(this).data("id");
+
+		if($('.menu--'+menu).is(':visible')){
+			$('.menu--'+menu).slideUp();
+		} else {
+			$('.menu-section').slideUp();
+			$('.menu--'+menu).slideDown();
+		}
+	});
+
+	/**
 	* Foundation declarations
 	*/
 	$(document).foundation();

@@ -1,0 +1,85 @@
+/*-- Header Stuff --*/
+.primary-header{
+  background-color: $darkGrey;
+}
+
+.top-header {
+  height: 40px;
+  width: 100%;
+  border-bottom: 2px solid $border;
+}
+
+.top-header--logo {
+  width: 140px;
+  padding-top: 3px;
+}
+
+.top-header--strap-line {
+  font-family: $heading;
+  font-size: 16pt;
+  color: $white;
+  text-transform: uppercase;
+
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+
+.top-header--menu-item {
+  cursor: pointer;
+  display: inline;
+  float: right;
+  font-family: $heading;
+  font-size: 18pt;
+  color: $white;
+}
+
+.top-header--dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  width: 175px;
+  z-index: 3;
+  background-color: $darkGrey;
+  border-left: 2px solid $border;
+  border-bottom: 2px solid $border;
+}
+
+.top-header--support-menu {
+  position: absolute;
+  left: 0;
+  top: 38px;
+  width: 100%;
+  z-index: 3;
+  padding: 15px;
+  color: $white;
+  background-color: $darkGrey;
+  border-bottom: 2px solid $border;
+}
+
+.top-header--dropdown-menu__item {
+  margin: 0 10%;
+  border-top: 1px solid $border;
+  padding: 5px 5px;
+  color: $white;
+  text-align: center;
+}
+
+.bottom-header {
+  width: 100%;
+  height: 60px;
+  background-color: #ddd;
+}
+
+.bottom-header--menu {
+  height: 100%;
+}
+
+.bottom-header--menu-item {
+  display: inline;
+  float: right;
+  font-family: $heading-bold;
+  font-size: 20pt;
+  color: $black;
+  padding: 10px 20px;
+}

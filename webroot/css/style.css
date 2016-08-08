@@ -8,6 +8,10 @@
  * Webroot / SASS / Style
  *
 **/
+li {
+  list-style: none;
+}
+
 @font-face {
   font-family: 'ssp';
   src: url("/fonts/sourcesanspro-regular-webfont.eot");
@@ -22,62 +26,110 @@
   font-weight: normal;
   font-style: normal;
 }
-.title-bar {
-  height: 100px;
-  background-color: #333 !important;
-  border-bottom: 3px solid #666;
+@font-face {
+  font-family: 'exo-bold';
+  src: url("/fonts/exo-bold-webfont.eot");
+  src: url("/fonts/exo-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/exo-bold-webfont.woff") format("woff"), url("/fonts/exo-bold-webfont.ttf") format("truetype"), url("/fonts/exo-bold-webfont.svg#exo-bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'exo-reg';
+  src: url("/fonts/exo-regular-webfont.eot");
+  src: url("/fonts/exo-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/exo-regular-webfont.woff") format("woff"), url("/fonts/exo-regular-webfont.ttf") format("truetype"), url("/fonts/exo-regular-webfont.svg#exo-reg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("/fonts/opensans-regular-webfont.eot");
+  src: url("/fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/opensans-regular-webfont.woff") format("woff"), url("/fonts/opensans-regular-webfont.ttf") format("truetype"), url("/fonts/opensans-regular-webfont.svg#open-sans") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*-- Header Stuff --*/
+.primary-header {
+  background-color: #333;
 }
 
-.title-bar-title {
-  font-family: "exo";
-  font-size: 30px;
+.top-header {
+  height: 40px;
+  width: 100%;
+  border-bottom: 2px solid #5DFC0A;
 }
-.title-bar-title:hover {
+
+.top-header--logo {
+  width: 140px;
+  padding-top: 3px;
+}
+
+.top-header--strap-line {
+  font-family: "exo";
+  font-size: 16pt;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+
+.top-header--menu-item {
+  cursor: pointer;
+  display: inline;
+  float: right;
+  font-family: "exo";
+  font-size: 18pt;
   color: #fff;
 }
 
-.title-bar-right {
+.top-header--dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  width: 175px;
+  z-index: 3;
+  background-color: #333;
+  border-left: 2px solid #5DFC0A;
+  border-bottom: 2px solid #5DFC0A;
+}
+
+.top-header--support-menu {
+  position: absolute;
+  left: 0;
+  top: 38px;
+  width: 100%;
+  z-index: 3;
+  padding: 15px;
+  color: #fff;
+  background-color: #333;
+  border-bottom: 2px solid #5DFC0A;
+}
+
+.top-header--dropdown-menu__item {
+  margin: 0 10%;
+  border-top: 1px solid #5DFC0A;
+  padding: 5px 5px;
+  color: #fff;
+  text-align: center;
+}
+
+.bottom-header {
+  width: 100%;
+  height: 60px;
+  background-color: #ddd;
+}
+
+.bottom-header--menu {
   height: 100%;
 }
 
-.menu-container {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-}
-
-.nav-user-menu {
-  left: auto !important;
-  top: 97px !important;
-  right: 0 !important;
-  background-color: #333;
-  padding: 0;
-  padding-top: 5px;
-  border: 0;
-  border-bottom: 3px solid #666;
-  border-left: 3px solid #666;
-  max-width: 150px;
-}
-
-.menu-li {
-  font-family: "exo";
-  text-align: right;
-  background-color: #333;
-  border-top: 1px solid #666;
-}
-.menu-li:hover {
-  background-color: #222;
-}
-
-.top-bar > .wrap > a,
-.menu-li > a {
-  font-family: "exo";
-}
-
-.top-bar {
-  background-color: #222;
-  height: 25px;
-  border-bottom: 3px solid #666;
+.bottom-header--menu-item {
+  display: inline;
+  float: right;
+  font-family: "exo-bold";
+  font-size: 20pt;
+  color: #000;
+  padding: 10px 20px;
 }
 
 /**
@@ -339,7 +391,7 @@
 }
 
 body {
-  background-color: #aaa;
+  background-color: #fff;
 }
 
 .rel-box {
@@ -354,6 +406,10 @@ body {
 }
 .sit-bottom.right {
   right: 0;
+}
+
+.float-right {
+  float: right;
 }
 
 .text-right {
@@ -388,7 +444,7 @@ a,
 }
 a.black,
 .link.black {
-  color: #333;
+  color: #000;
 }
 a:focus,
 .link:focus {
@@ -410,7 +466,7 @@ h4, h5, h6 {
 
 .api-hero {
   padding-top: 75px;
-  background-color: #666;
+  background-color: #5DFC0A;
   border: 1px solid #000;
   min-width: 100%;
   max-width: 100%;

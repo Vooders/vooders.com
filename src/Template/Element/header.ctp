@@ -12,28 +12,31 @@ $session = $this->request->session()->read('User.id');
 if($session !== null) $loggedIn = true; 
 ?>
 <header class="primary-header">
-	<div class="row expanded top-header rel">
+	<div class="row top-header rel">
 		<div class="columns small-12 medium-6">
-			<a href="/">VOODERS.COM</a>
+			<a href="/" class="main-logo">VOODERS.COM</a>
 		</div>
 		<div class="columns small-12 medium-6 float-right">
 			<ul>
 				<?php if($loggedIn): ?>
-					<li><span class="icon-right icon--background__dropdown top-header--menu-item pad-left js-menu" data-id="account">Account</span></li>
+					<li><span class="icon-right icon--background__dropdown top-header--menu-item pad-left js-menu" data-id="support">MENU</span></li>
+				<?php else: ?>
+				<li>
+					<?= $this->Html->link(__('Log In'), [
+						'controller'=>'Users',
+						'action'=>'login'
+					],[
+						'class'=>'icon-right icon--background__dropdown top-header--menu-item pad-left'
+					]) ?>
+				</li>
 				<?php endif; ?>
-				<li><span class="icon-right icon--background__dropdown top-header--menu-item pad-left js-menu" data-id="support">Help</span></li>
 			</ul>
 		</div>
 		<?php if($loggedIn): ?>
 			<div class="menu--account top-header--dropdown-menu menu-section" style="display:none">
 				<ul class="">
 					<li class="top-header--dropdown-menu__item">
-						<?= $this->Html->link(__('Dashboard'), [
-							'controller'=>'Users',
-							'action'=>'dashboard'
-						],[
-							'class'=>'text-white'
-						]) ?>
+						
 					</li>
 					<li class="top-header--dropdown-menu__item">
 						<?= $this->Html->link(__('Log Out'), [
@@ -46,44 +49,84 @@ if($session !== null) $loggedIn = true;
 				</ul>
 			</div>
 		<?php endif; ?>
+		
+	</div>
+	<div class='row expanded'>
 		<div class="menu--support top-header--support-menu menu-section" style="display:none">
 			<div class="small-12 columns">
-				<p>This is the support menu!</p>
-				<p>Here we can put helpfull things to help the users!</p>
+				<div class="row ">
+					<div class="small-12 columns bottom-header">
+						<ul class='bottom-header--menu'>
+							
+							<li class='bottom-header--menu-item large-2 medium-4 small-6 text-white'>Account</li>
+							<li class='bottom-header--menu-item large-2 medium-4 small-6'>
+								<?= $this->Html->link(__('Profile'), [
+									'controller'=>'Users',
+									'action'=>'profile'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+							<li class='bottom-header--menu-item large-2 medium-4 small-6'>
+								<?= $this->Html->link(__('API Keys'), [
+									'controller'=>'Users',
+									'action'=>'apiKeys'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+							<li class='bottom-header--menu-item large-2 medium-4 small-6'>
+								<?= $this->Html->link(__('Mumble'), [
+									'controller'=>'Pages',
+									'action'=> 'mumble'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+							<li class='bottom-header--menu-item large-2 medium-4 small-6'>
+								<a href="" class="text-white">Thing</a>
+							</li>
+							<li class='bottom-header--menu-item no-border large-2 medium-4 small-6'>
+								<a href="https://git.vooders.com" class="text-white">Git</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns bottom-main">
+						<ul class='bottom-main--menu'>
+							<li class='bottom-main--menu-item medium-4 small-6'>
+								<?= $this->Html->link(__('HOTS'), [
+									'controller'=>'Users',
+									'action'=>'profile'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+							<li class='bottom-main--menu-item medium-4 small-6'>
+								<?= $this->Html->link(__('Steam'), [
+									'controller'=>'Users',
+									'action'=>'apiKeys'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+							<li class='bottom-main--menu-item no-border medium-4 small-6'>
+								<?= $this->Html->link(__('OverWatch'), [
+									'controller'=>'OverwatchStats',
+									'action'=> 'index'
+								],[
+									'class'=>'text-white'
+								]) ?>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row expanded bottom-header">
-		<ul class="bottom-header--menu">
-			<?php if($loggedIn): ?>
-				<li class="">
-					<?= $this->Html->link(__('Dashboard'), [
-						'controller'=>'Users',
-						'action'=>'dashboard'
-					],[
-						'class'=>'icon--bottom-header icon--background__dashboard bottom-header--menu-item'
-					]) ?>
-				</li>
-			<?php else: ?>
-				<li class="">
-					<?= $this->Html->link(__('Login'), [
-						'controller'=>'Users',
-						'action'=>'login'
-					],[
-						'class'=>'icon--bottom-header icon--background__dashboard bottom-header--menu-item'
-					]) ?>
-				</li>
-				<li class="">
-					<?= $this->Html->link(__('Register'), [
-						'controller'=>'Users',
-						'action'=>'register'
-					],[
-						'class'=>'icon--bottom-header icon--background__projects bottom-header--menu-item'
-					]) ?>
-				</li>
-			<?php endif; ?>
-		</ul>
-	</div>
+	
 <!--
 		<nav class="columns small-12 medium-9 primary-nav">
 			<ul class="primary-nav__group">

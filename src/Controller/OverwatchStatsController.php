@@ -49,13 +49,16 @@ class OverwatchStatsController extends AppController
 
             $array = [];
             foreach ($stats->Junkrat as $name => $stat){
+                $name = str_replace('-', '_', $name);
                 $array[$name] = $stat;
             }
 
             $hero = $this->OverwatchJunkratStats->patchEntity($hero, $array, ['validate' => false]);
-debug($hero); // test
+            $hero->user_id = $this->request->session()->read('User.id');
             if($this->OverwatchJunkratStats->save($hero)){
-                echo 'saved';
+                $test = $this->OverwatchJunkratStats->get(1);
+debug('we did it');
+                debug($test);
             } else {
                 echo 'error';
             }

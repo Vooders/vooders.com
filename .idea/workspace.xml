@@ -56,7 +56,7 @@
             <entry file="file://$PROJECT_DIR$/src/Controller/OverwatchStatsController.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="294">
-                  <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+                  <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
                   <folding>
                     <element signature="e#33#66#0#PHP" expanded="true" />
                   </folding>
@@ -390,7 +390,7 @@
       <workItem from="1467191798069" duration="4207000" />
       <workItem from="1467477421524" duration="6330000" />
       <workItem from="1467540391798" duration="7616000" />
-      <workItem from="1469865142088" duration="8491000" />
+      <workItem from="1469865142088" duration="8985000" />
     </task>
     <task id="LOCAL-00001" summary="Testing PHP Storm">
       <created>1466972289483</created>
@@ -417,7 +417,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60483000" />
+    <option name="totallyTimeSpent" value="60977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="1" />
@@ -848,7 +848,7 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/OverwatchStatsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
-          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
           <folding>
             <element signature="e#33#66#0#PHP" expanded="true" />
           </folding>

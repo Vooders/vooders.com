@@ -53,7 +53,7 @@ class OverwatchStatsController extends AppController
             }
 
             $hero = $this->OverwatchJunkratStats->patchEntity($hero, $array, ['validate' => false]);
-debug($hero);
+debug($hero); // test
             if($this->OverwatchJunkratStats->save($hero)){
                 echo 'saved';
             } else {

@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Utility\Security;
 
 /**
  * MumbleUser Entity
@@ -33,4 +34,8 @@ class MumbleUser extends Entity
         '*' => true,
         'user_id' => false
     ];
+
+    protected function _setPw($value){
+        return Security::hash($value, 'sha1');
+    }
 }

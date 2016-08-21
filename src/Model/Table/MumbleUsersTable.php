@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * MumbleUsers Model
@@ -31,9 +32,10 @@ class MumbleUsersTable extends Table
      */
     public function initialize(array $config)
     {
-        parent::initialize($config);
 
-        $this->table('mumble_users');
+        parent::initialize($config);
+        $this->table('mumble.mumble_users');
+
         $this->displayField('name');
         $this->primaryKey('user_id');
 
@@ -41,9 +43,10 @@ class MumbleUsersTable extends Table
             'foreignKey' => 'server_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Users', [
+      //  $this->hasOne('Users');
+        $this->hasMany('MumbleGroups', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+            'joinTable' => 'mumble_group_members'
         ]);
     }
 
@@ -85,8 +88,8 @@ class MumbleUsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['server_id'], 'MumbleServers'));
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
+      //  $rules->add($rules->existsIn(['server_id'], 'MumbleServers'));
+        //$rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

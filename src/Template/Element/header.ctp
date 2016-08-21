@@ -77,7 +77,7 @@ if($session !== null) $loggedIn = true;
 							</li>
 							<li class='bottom-header--menu-item large-2 medium-4 small-6'>
 								<?= $this->Html->link(__('Mumble'), [
-									'controller'=>'Pages',
+									'controller'=>'MumbleUsers',
 									'action'=> 'mumble'
 								],[
 									'class'=>'text-white'

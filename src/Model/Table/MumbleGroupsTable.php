@@ -38,9 +38,9 @@ class MumbleGroupsTable extends Table
         $this->displayField('name');
         $this->primaryKey('group_id');
 
-        $this->belongsTo('Groups', [
+        $this->hasMany('MumbleUsers', [
             'foreignKey' => 'group_id',
-            'joinType' => 'INNER'
+            'joinTable' => 'mumble_group_members'
         ]);
         $this->belongsTo('MumbleChannels', [
             'foreignKey' => 'server_id',

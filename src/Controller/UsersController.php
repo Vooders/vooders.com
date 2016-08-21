@@ -55,20 +55,25 @@ class UsersController extends AppController
     /**
      * Profile method
      *
-     *
      */
     public function profile(){
-    $userId =  $this->request->session()->read('User.id');
+        $userId =  $this->request->session()->read('User.id');
 
-    $user = $this->Users->get($userId, [
-        'contain' => [
-            'UserContacts', 
-            'UserEmails',
-            'BattleTags'
-        ]
-    ]);
+        $user = $this->Users->get($userId, [
+            'contain' => [
+                'UserContacts', 
+                'UserEmails',
+                'BattleTags'
+            ]
+        ]);
 
-    $this->set(compact('user'));
+        if($user->mumble_id !== null){
+            $this->loadModel('MumbleUsers');
+            $mumbleUser = $this->MumbleUsers->get($user->mumble_id);
+            $this->set(compact('mumbleUser'));
+        }
+
+        $this->set(compact('user'));
     }
 
     /**

@@ -39,10 +39,7 @@ class MumbleUserInfoTable extends Table
             'foreignKey' => 'server_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('MumbleUsers', [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
-        ]);
+        
     }
 
     /**

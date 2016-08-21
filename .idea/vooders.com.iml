@@ -95,5 +95,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="vooders.com node_modules" level="project" />
   </component>
 </module>

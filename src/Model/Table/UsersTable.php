@@ -43,6 +43,7 @@ class UsersTable extends Table
         $this->hasOne('SteamIds', [
             'foreignKey' => 'user_id'
         ]);
+        $this->belongsTo('MumbleUser');
     }
 
     /**

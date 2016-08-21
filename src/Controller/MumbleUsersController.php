@@ -54,8 +54,6 @@ class MumbleUsersController extends AppController
         $mumbleUser = $this->MumbleUsers->newEntity();
         if ($this->request->is('post')) {
             $mumbleUser = $this->MumbleUsers->patchEntity($mumbleUser, $this->request->data);
-            $mumbleUser->pw = Security::hash($mumbleUser->pw, 'sha1');
-//debug($mumbleUser);die;
             if ($this->MumbleUsers->save($mumbleUser)) {
                 $this->Flash->success(__('The mumble user has been saved.'));
 
@@ -67,7 +65,6 @@ class MumbleUsersController extends AppController
         $mumbleServers = $this->MumbleUsers->MumbleServers->find('list', ['limit' => 200]);
 
         $this->set(compact('mumbleUser', 'mumbleServers', 'users'));
-        $this->set('_serialize', ['mumbleUser']);
     }
 
     /**

@@ -255,7 +255,9 @@ CREATE TABLE IF NOT EXISTS `overwatch_junkrat_stats` (
   `SoloKills_MostinGame` int(11) NOT NULL,
   `Deaths_Average` float(11) NOT NULL,
   `SoloKills_Average` float(11) NOT NULL,
-  `ObjectiveTime_Average` varchar(20) NOT NULL,
+  `ObjectiveTime_Average` varchar(20)
+
+    NOT NULL,
   `ObjectiveKills_Average` float(11) NOT NULL,
   `HealingDone_Average` float(11) NOT NULL,
   `FinalBlows_Average` float(11) NOT NULL,

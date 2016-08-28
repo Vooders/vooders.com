@@ -443,7 +443,7 @@
       <workItem from="1471121967544" duration="8000" />
 =======
       <workItem from="1469865142088" duration="19609000" />
->>>>>>> style stuff
+      <workItem from="1471791994523" duration="2706000" />
     </task>
     <task id="LOCAL-00001" summary="Testing PHP Storm">
       <created>1466972289483</created>
@@ -470,19 +470,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< refs/remotes/origin/Production
-    <option name="totallyTimeSpent" value="68192000" />
+    <option name="totallyTimeSpent" value="74307000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="45" width="1920" height="1114" extended-state="6" />
+    <frame x="0" y="45" width="1366" height="723" extended-state="0" />
     <editor active="false" />
-=======
-    <option name="totallyTimeSpent" value="71601000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="45" width="1366" height="723" extended-state="1" />
-    <editor active="true" />
->>>>>>> style stuff
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3434829" sideWeight="0.582846" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

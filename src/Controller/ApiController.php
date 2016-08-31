@@ -15,7 +15,9 @@ class ApiController extends AppController{
 	 * .com tracker functions *
 	\**************************/
 
-
+	/**
+	 * Returns the total .com domians
+	 */
 	public function dotComTotal(){
 		$this->autoRender = false;
 		$this->loadModel('DotComCounts');
@@ -29,6 +31,30 @@ class ApiController extends AppController{
 		}
 	}
 
+	/**
+	 * Returns the .coms registered today
+	 */
+	public function todaysDotComs(){
+		$this->autoRender = false;
+		$this->loadModel('DotComCounts');
+
+		$i = $this->DotComCounts->find('all')->count();
+
+		if($i > 1){
+			$today = $this->DotComCounts->get($i);
+			$yesterday = $this->DotComCounts->get($i-1);
+
+			echo json_encode([($today->count - $yesterday->count) => $yesterday->created]);
+		}
+	}
+
+	/**************************\
+	 * .net tracker functions *
+	\**************************/
+
+	/**
+	 * Returns the total .net domians
+	 */
 	public function dotNetTotal(){
 		$this->autoRender = false;
 		$this->loadModel('DotNetCounts');
@@ -41,6 +67,27 @@ class ApiController extends AppController{
 			echo '0';
 		}
 	}
+
+	/**
+	 * Returns the .nets registered today
+	 */
+	public function todaysDotNets(){
+		$this->autoRender = false;
+		$this->loadModel('DotNetCounts');
+
+		$i = $this->DotNetCounts->find('all')->count();
+
+		if($i > 1){
+			$today = $this->DotNetCounts->get($i);
+			$yesterday = $this->DotNetCounts->get($i-1);
+
+			echo json_encode([($today->count - $yesterday->count) => $yesterday->created]);
+		}
+	}
+
+	/**************************\
+	 *   scraping functions   *
+	\**************************/
 
 	/**
 	 * Scrape the page at verisign and saves the .com and .net total to the database

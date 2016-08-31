@@ -7,13 +7,12 @@ use DOMDocument;
 
 /**
  * API Controller
- *
  */
 class ApiController extends AppController{
 
-	/**************************\
-	 * .com tracker functions *
-	\**************************/
+							/**************************\
+============================ * .com tracker functions * ============================
+							\**************************/
 
 	/**
 	 * Returns the total .com domians
@@ -48,9 +47,9 @@ class ApiController extends AppController{
 		}
 	}
 
-	/**************************\
-	 * .net tracker functions *
-	\**************************/
+							/**************************\
+============================ * .net tracker functions * ============================ 
+							\**************************/
 
 	/**
 	 * Returns the total .net domians
@@ -85,9 +84,9 @@ class ApiController extends AppController{
 		}
 	}
 
-	/**************************\
-	 *   scraping functions   *
-	\**************************/
+							/**************************\
+============================ *   scraping functions   * ============================
+							\**************************/
 
 	/**
 	 * Scrape the page at verisign and saves the .com and .net total to the database

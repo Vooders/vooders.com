@@ -137,4 +137,19 @@ class ApiController extends AppController{
 			}
 		}
 	}
+
+							/**************************\
+============================ *   security functions   * ============================
+							\**************************/
+	/**
+	 * Allow all functions to be called without auth
+	 */
+	public function beforeFilter($event){
+		parent::beforeFilter($event);
+        $this->Auth->allow(['scrapeVerisign', 'todaysDotNets', 'todaysDotComs', 'dotNetTotal', 'dotComTotal']);
+    }
+
+	public function isAuthorized(){
+		return true;
+	}
 }

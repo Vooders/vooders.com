@@ -74,6 +74,25 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="header.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Template/Element/header.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+<<<<<<< refs/remotes/origin/Production
+                <state relative-caret-position="285">
+                  <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+                  <folding />
+=======
+                <state relative-caret-position="375">
+                  <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+                  <folding>
+                    <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
+                  </folding>
+>>>>>>> style stuff
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -111,8 +130,13 @@
           <file leaf-file-name="_helpers.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/styles/_helpers.scss">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< refs/remotes/origin/Production
+                <state relative-caret-position="435">
+                  <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+=======
                 <state relative-caret-position="150">
                   <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+>>>>>>> style stuff
                   <folding />
                 </state>
               </provider>
@@ -271,9 +295,16 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< refs/remotes/origin/Production
+    <option name="x" value="1680" />
+    <option name="y" value="45" />
+    <option name="width" value="1920" />
+    <option name="height" value="1114" />
+=======
     <option name="y" value="45" />
     <option name="width" value="1366" />
     <option name="height" value="723" />
+>>>>>>> style stuff
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -407,6 +438,10 @@
       <workItem from="1467191798069" duration="4207000" />
       <workItem from="1467477421524" duration="6330000" />
       <workItem from="1467540391798" duration="7616000" />
+<<<<<<< refs/remotes/origin/Production
+      <workItem from="1469865142088" duration="16192000" />
+      <workItem from="1471121967544" duration="8000" />
+=======
       <workItem from="1469865142088" duration="19609000" />
       <workItem from="1471791994523" duration="2706000" />
     </task>
@@ -508,6 +543,12 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< refs/remotes/origin/Production
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+=======
     <entry file="file://$PROJECT_DIR$/src/Controller/HearthstoneCardsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -738,6 +779,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../med-app/webroot/sass/_fonts.scss">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="41" column="1" selection-start-line="10" selection-start-column="0" selection-end-line="41" selection-end-column="1" />
+>>>>>>> style stuff
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< refs/remotes/origin/Production
+    <entry file="file://$PROJECT_DIR$/src/Template/Element/header.ctp">
+=======
+    <entry file="file://$PROJECT_DIR$/src/styles/_typography.scss">
+>>>>>>> style stuff
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
         </state>
@@ -769,6 +823,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/_helpers.scss">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< refs/remotes/origin/Production
+        <state relative-caret-position="435">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+=======
         <state relative-caret-position="150">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           <folding />
@@ -803,8 +861,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Element/header.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state relative-caret-position="-25">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+>>>>>>> style stuff
           <folding />
         </state>
       </provider>

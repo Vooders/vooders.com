@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\Time;
+use Cake\Event\Event;
 use DOMDocument;
 
 /**
@@ -144,12 +145,8 @@ class ApiController extends AppController{
 	/**
 	 * Allow all functions to be called without auth
 	 */
-	public function beforeFilter($event){
+	public function beforeFilter(Event $event){
 		parent::beforeFilter($event);
         $this->Auth->allow(['scrapeVerisign', 'todaysDotNets', 'todaysDotComs', 'dotNetTotal', 'dotComTotal']);
     }
-
-	public function isAuthorized(){
-		return true;
-	}
 }

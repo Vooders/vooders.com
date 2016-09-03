@@ -1,7 +1,6 @@
 <div class="wrap">
     <div class="small-12 columns">
         <div class="">
-        <?= phpinfo() ?>
             <?= $this->Flash->render('auth') ?>
             <?= $this->Form->create() ?>
             <fieldset>

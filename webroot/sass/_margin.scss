@@ -1,0 +1,44 @@
+/**
+ * Application: Markets Meet
+ *
+ * Version: 0.1.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / Sass / margin
+ *
+ * - Helper classes to add margin where needed
+ *
+ */
+
+.marg { margin: 20px }
+.marg-top { margin-top: 20px }
+.marg-right { margin-right: 20px }
+.marg-bottom { margin-bottom: 20px }
+.marg-left { margin-left: 20px }
+
+.marg--none { margin: 0 }
+.marg-top--none { margin-top: 0 }
+.marg-right--none { margin-right: 0 }
+.marg-bottom--none { margin-bottom: 0 }
+.marg-left--none { margin-left: 0 }
+
+.marg--large { margin: 40px }
+.marg-top--large { margin-top: 40px }
+.marg-right--large { margin-right: 40px }
+.marg-bottom--large { margin-bottom: 40px }
+.marg-left--large { margin-left: 40px }
+
+.marg--small { margin: 10px }
+.marg-top--small { margin-top: 10px }
+.marg-right--small { margin-right: 10px }
+.marg-bottom--small { margin-bottom: 10px }
+.marg-left--small { margin-left: 10px }
+
+.marg--tiny { margin: 5px }
+.marg-top--tiny { margin-top: 5px }
+.marg-right--tiny { margin-right: 5px }
+.marg-bottom--tiny { margin-bottom: 5px }
+.marg-left--tiny { margin-left: 5px }
+

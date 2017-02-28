@@ -1,0 +1,401 @@
+/**
+ * Application: Your Safety PAL
+ * Version: 0.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / SASS / Style
+ *
+**/
+@font-face {
+  font-family: 'ssp';
+  src: url("/fonts/sourcesanspro-regular-webfont.eot");
+  src: url("/fonts/sourcesanspro-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/sourcesanspro-regular-webfont.woff") format("woff"), url("/fonts/sourcesanspro-regular-webfont.ttf") format("truetype"), url("/fonts/sourcesanspro-regular-webfont.svg#ssp") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'exo';
+  src: url("/fonts/exo-extralight-webfont.eot");
+  src: url("/fonts/exo-extralight-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/exo-extralight-webfont.woff") format("woff"), url("/fonts/exo-extralight-webfont.ttf") format("truetype"), url("/fonts/exo-extralight-webfont.svg#open_sansextrabold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'exo-bold';
+  src: url("/fonts/exo-bold-webfont.eot");
+  src: url("/fonts/exo-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/exo-bold-webfont.woff") format("woff"), url("/fonts/exo-bold-webfont.ttf") format("truetype"), url("/fonts/exo-bold-webfont.svg#exo-bold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'exo-reg';
+  src: url("/fonts/exo-regular-webfont.eot");
+  src: url("/fonts/exo-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/exo-regular-webfont.woff") format("woff"), url("/fonts/exo-regular-webfont.ttf") format("truetype"), url("/fonts/exo-regular-webfont.svg#exo-reg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'open-sans';
+  src: url("/fonts/opensans-regular-webfont.eot");
+  src: url("/fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/opensans-regular-webfont.woff") format("woff"), url("/fonts/opensans-regular-webfont.ttf") format("truetype"), url("/fonts/opensans-regular-webfont.svg#open-sans") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+body {
+  background-color: #f0f0f0; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+/*-- Header Stuff --*/
+.main-logo {
+  font-size: 28px; }
+
+.primary-header {
+  background-color: #333; }
+
+.top-header {
+  height: 40px;
+  width: 100%;
+  border-bottom: 2px solid #5DFC0A; }
+
+.top-header--logo {
+  width: 140px;
+  padding-top: 3px; }
+
+.top-header--strap-line {
+  font-family: "exo";
+  font-size: 16pt;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  top: 5px;
+  left: 5px; }
+
+.top-header--menu-item {
+  cursor: pointer;
+  display: inline;
+  float: right;
+  font-family: "exo";
+  font-size: 18pt;
+  color: #fff; }
+
+.top-header--dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  width: 175px;
+  z-index: 3;
+  background-color: #333;
+  border-left: 2px solid #5DFC0A;
+  border-bottom: 2px solid #5DFC0A; }
+
+.top-header--support-menu {
+  position: absolute;
+  left: 0;
+  top: 38px;
+  width: 100%;
+  z-index: 3;
+  padding: 15px;
+  color: #fff;
+  background-color: #333;
+  border-bottom: 2px solid #5DFC0A; }
+
+.top-header--dropdown-menu__item {
+  margin: 0 10%;
+  border-top: 1px solid #5DFC0A;
+  padding: 5px 5px;
+  color: #fff;
+  text-align: center; }
+
+.bottom-header--menu {
+  height: 100%; }
+
+.bottom-header--menu-item {
+  display: inline;
+  float: right;
+  font-family: "exo-bold";
+  font-size: 14px;
+  text-align: center;
+  color: #000;
+  border-left: 1px solid #ccc; }
+  .bottom-header--menu-item.no-border {
+    border-left: none; }
+
+.bottom-main {
+  margin-top: 10px; }
+
+.bottom-main--menu {
+  height: 100%; }
+
+.bottom-main--menu-item {
+  display: inline;
+  float: right;
+  font-family: "exo-bold";
+  font-size: 24px;
+  text-align: center;
+  color: #000;
+  border-left: 1px solid #ccc;
+  padding: 0 20px; }
+  .bottom-main--menu-item.no-border {
+    border-left: none; }
+
+/**
+ * Application: Markets Meet
+ *
+ * Version: 0.2.0
+ *
+ * Framework: CakePHP
+ * Version: 3.*.*
+ *
+ * Webroot / Sass / Padding
+ *
+ * - Helper classes to add padding where needed
+ *
+ */
+.pad {
+  padding: 20px; }
+
+.pad-top {
+  padding-top: 20px; }
+
+.pad-right {
+  padding-right: 20px; }
+
+.pad-bottom {
+  padding-bottom: 20px; }
+
+.pad-left {
+  padding-left: 20px; }
+
+.pad--none {
+  padding: 0; }
+
+.pad-top--none {
+  padding-top: 0; }
+
+.pad-right--none {
+  padding-right: 0; }
+
+.pad-bottom--none {
+  padding-bottom: 0; }
+
+.pad-left--none {
+  padding-left: 0; }
+
+.pad--tiny {
+  padding: 5px; }
+
+.pad-top--tiny {
+  padding-top: 5px; }
+
+.pad-right--tiny {
+  padding-right: 5px; }
+
+.pad-bottom--tiny {
+  padding-bottom: 5px; }
+
+.pad-left--tiny {
+  padding-left: 5px; }
+
+.pad--small {
+  padding: 10px; }
+
+.pad-top--small {
+  padding-top: 10px; }
+
+.pad-right--small {
+  padding-right: 10px; }
+
+.pad-bottom--small {
+  padding-bottom: 10px; }
+
+.pad-left--small {
+  padding-left: 10px; }
+
+.pad--large {
+  padding: 40px; }
+
+.pad-top--large {
+  padding-top: 40px; }
+
+.pad-right--large {
+  padding-right: 40px; }
+
+.pad-bottom--large {
+  padding-bottom: 40px; }
+
+.pad-left--large {
+  padding-left: 40px; }
+
+.pad--giant {
+  padding: 60px; }
+
+.pad-top--giant {
+  padding-top: 60px; }
+
+.pad-right--giant {
+  padding-right: 60px; }
+
+.pad-bottom--giant {
+  padding-bottom: 60px; }
+
+.pad-left--giant {
+  padding-left: 60px; }
+
+/**
+ * Application: Markets Meet
+ *
+ * Version: 0.1.1
+ *
+ * Framework: CakePHP
+ * Version: 3.0.*
+ *
+ * Webroot / Sass / margin
+ *
+ * - Helper classes to add margin where needed
+ *
+ */
+.marg {
+  margin: 20px; }
+
+.marg-top {
+  margin-top: 20px; }
+
+.marg-right {
+  margin-right: 20px; }
+
+.marg-bottom {
+  margin-bottom: 20px; }
+
+.marg-left {
+  margin-left: 20px; }
+
+.marg--none {
+  margin: 0; }
+
+.marg-top--none {
+  margin-top: 0; }
+
+.marg-right--none {
+  margin-right: 0; }
+
+.marg-bottom--none {
+  margin-bottom: 0; }
+
+.marg-left--none {
+  margin-left: 0; }
+
+.marg--large {
+  margin: 40px; }
+
+.marg-top--large {
+  margin-top: 40px; }
+
+.marg-right--large {
+  margin-right: 40px; }
+
+.marg-bottom--large {
+  margin-bottom: 40px; }
+
+.marg-left--large {
+  margin-left: 40px; }
+
+.marg--small {
+  margin: 10px; }
+
+.marg-top--small {
+  margin-top: 10px; }
+
+.marg-right--small {
+  margin-right: 10px; }
+
+.marg-bottom--small {
+  margin-bottom: 10px; }
+
+.marg-left--small {
+  margin-left: 10px; }
+
+.marg--tiny {
+  margin: 5px; }
+
+.marg-top--tiny {
+  margin-top: 5px; }
+
+.marg-right--tiny {
+  margin-right: 5px; }
+
+.marg-bottom--tiny {
+  margin-bottom: 5px; }
+
+.marg-left--tiny {
+  margin-left: 5px; }
+
+.rel {
+  position: relative; }
+
+.static {
+  position: static; }
+
+.wrap {
+  margin: 0 5%; }
+
+.rel-box {
+  position: relative;
+  height: 100%; }
+
+.sit-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+  .sit-bottom.right {
+    right: 0; }
+
+.float-right {
+  float: right; }
+
+.text-right {
+  text-align: right; }
+
+.float-right {
+  float: right; }
+
+.text-white {
+  color: #fff; }
+
+.exo {
+  font-family: "exo"; }
+
+.bold {
+  font-weight: bold; }
+
+.bigger {
+  font-size: 1.5rem; }
+
+a,
+.link {
+  font-family: "ssp";
+  color: #fff;
+  cursor: pointer; }
+  a.black,
+  .link.black {
+    color: #000; }
+  a:focus,
+  .link:focus {
+    color: #fff; }
+  a:hover,
+  .link:hover {
+    color: #ffff00; }
+
+p {
+  font-family: "ssp"; }
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: "exo"; }
+
+.api-hero {
+  padding-top: 75px;
+  background-color: #ccc;
+  border: 1px solid #000;
+  min-width: 100%;
+  max-width: 100%; }

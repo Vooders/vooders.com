@@ -1,47 +1,38 @@
-<div class="wrap">
-    <div class="small-12 columns">
-        <div class="">
-            <?= $this->Flash->render('auth') ?>
-            <?= $this->Form->create() ?>
+
+<div class="col-lg-6">
+    <div class="well bs-component">
+        <?= $this->Flash->render('auth') ?>
+        <?= $this->Form->create(null ,[
+            'class' => 'form-horizontal'
+        ]) ?>
+        
+        <div class="col-sml-12">
             <fieldset>
-                <h3>Log In</h3>
-                <?= $this->Form->input('username', [
-                    'class' => 'js-login'
-                ]) ?>
-                <span class="info-span"></span>
-                <br/>
-                <?= $this->Form->input('password') ?>
-          </fieldset>
-        </div>
-        <div class="row">
+                <legend>Log In</legend>
+                <div class="form-group">
+                    <?= $this->Form->input('username', [
+                        'class' => 'js-login form-control'
+                    ]) ?>
+                    <span class="info-span"></span>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->input('password', [
+                        'class' => 'form-control'
+                    ]) ?>
+                </div>    
+            </fieldset>
+         
             <?= $this->Form->button(__('Login'),[
-                'class' => 'large button'
-            ]); ?>
-            <?= $this->Form->end() ?>
-
-
-        </div>
-        <div class="row">
-            <?= $this->Html->link('Register', [
-                'controller' => 'users',
-                'action' => 'register'
-            ], [
-                'class' => 'tiny button'
-            ]) ?>
-            <?= $this->Html->link('Forgot Password?', [
-                'controller' => 'users',
-                'action' => 'requestPasswordReset'
-            ], [
-                'class' => 'tiny button'
-            ]) ?>
-            <br/>
-            <?= $this->Html->link('Forgot Username?', [
-                'controller' => 'users',
-                'action' => 'forgotUsername'
-            ], [
-                'class' => 'tiny button'
+                'class' => 'btn btn-primary btn-lg'
             ]) ?>
         </div>
+        <div class="col-sml-12 pad-top--small">
+            <a href="/register" class="btn btn-default btn-sm">Register</a>
+            <a href="/forgot-password" class="btn btn-default btn-sm">Forgot Password?</a>
+            <a href="/forgot-username" class="btn btn-default btn-sm">Forgot Username?</a>
+        </div>
+        <?= $this->Form->end() ?>
     </div>
 </div>
+
 

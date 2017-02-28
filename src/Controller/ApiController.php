@@ -12,6 +12,39 @@ use DOMDocument;
 class ApiController extends AppController{
 
 							/**************************\
+============================ *   Scraper functions    * ============================
+							\**************************/
+
+	/**
+	 * Splits up the csv file into useable chuncks
+	 */						
+	public function splitFile(){
+		// Get the file
+		$file = file_get_contents(WWW_ROOT .'scraper/test.csv');
+		// Split the lines
+		$pow = explode(PHP_EOL, $file);
+		$set = []; // Will hold lines as arrays
+		// Split the lines into arrays
+		foreach ($pow as $line) {
+			$set[] = explode(';', $line);
+		}
+		
+		$categories = []; // Array to hold the categories
+		$productCategories = [];
+		// Split the set into products and their categories
+		foreach ($set as $product) {
+			$boom = explode('|', $product[2]);
+			foreach ($boom as $category) {
+				$productCategories[$product[3]][] = $category;
+				$categories[] = $category;
+			}
+		}
+debug(sizeof(array_unique($categories)).'/'.sizeof($categories));
+debug($productCategories);
+debug($set);die;
+	}
+
+							/**************************\
 ============================ * .com tracker functions * ============================
 							\**************************/
 
@@ -147,6 +180,6 @@ class ApiController extends AppController{
 	 */
 	public function beforeFilter(Event $event){
 		parent::beforeFilter($event);
-        $this->Auth->allow(['scrapeVerisign', 'todaysDotNets', 'todaysDotComs', 'dotNetTotal', 'dotComTotal']);
+        $this->Auth->allow(['scrapeVerisign', 'todaysDotNets', 'todaysDotComs', 'dotNetTotal', 'dotComTotal', 'splitFile']);
     }
 }

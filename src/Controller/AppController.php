@@ -66,15 +66,14 @@ class AppController extends Controller
       $this->loadComponent('Auth', [
         'loginRedirect' => [
           'controller' => 'Users',
-          'action'=> 'profile'
+          'action'=> 'dashboard'
         ],
         'logoutRedirect'=>[
-          'controller'=>'Pages',
-          'action'=>'display',
-          'home'
+          'controller'=>'Users',
+          'action'=>'login'
         ],
         'authorize'=>'Controller',
-        'unauthorizedRedirect'=>['controller'=>'pages', 'action'=>'display', 'home']
+        'unauthorizedRedirect'=>['controller'=>'Users', 'action'=>'login']
       ]);
       // Allow the display action so our pages controller
       // continues to work.

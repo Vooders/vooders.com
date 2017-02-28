@@ -1,36 +1,44 @@
-<div class="row">
-	<div class="small-12 columns marg-top">
+<div class="col-lg-12">
+    <div class="well bs-component">
 		<h1>Password Generator</h1>
-		<p>Replace your shitty human words with long secure nonsense.</p>
-		<hr/>
+
 		<?= $this->Form->create(null, [
 			'url' => [
 				'controller' => 'PasswordGenerator',
 				'action' => 'index'
-			]
+			],
+			'class' => 'form-horizontal'
 		]); ?> 
-		<?= $this->Form->password('username', [
-			'type' => 'hidden'
-		]) ?>
-		<?= $this->Form->input('password', [
-			'type' => 'hidden'
-		]) ?>
-		<?= $this->Form->input('input', [
-			'label' => 'Enter your shitty human words',
-			'type' => 'password',
-			'autocomplete' => 'off'
-		]) ?>
+		<fieldset>
+			<legend>Replace your shitty human words with long secure nonsense.</legend>
+			<?= $this->Form->password('username', [
+				'type' => 'hidden'
+			]) ?>
+			<?= $this->Form->input('password', [
+				'type' => 'hidden'
+			]) ?>
+            <div class="form-group">
+				<?= $this->Form->input('input', [
+					'label' => 'Enter your shitty human words',
+					'type' => 'password',
+					'autocomplete' => 'off',
+					'class' => 'form-control',
+					'value' => ''
+				]) ?>
+			</div>
+		</fieldset>
 		<?= $this->Form->submit('Generate', [
-			'class' => 'button'
+			'class' => 'btn btn-primary btn-lg'
 		]) ?>
 		<?= $this->Form->end(); ?>
-	</div>
-	<?php if(isset($output)): ?>
-		<div class="small-12 columns pad-top">
-			<p>Here is your long secure nonsense.</p>
-			<div class="" style="border:1px solid #333; background-color:#fff; overflow-y:scroll;">
-				<p style="margin:5px 0;"><?= $output ?></p>	
+
+		<?php if(isset($output)): ?>
+			<div class="pad-top">
+				<legend>Here is your long secure nonsense.</legend>
+				<div class="alert alert-dismissible alert-success">
+					<p style="margin:5px 0;"><?= $output ?></p>	
+				</div>
 			</div>
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
+	</div>
 </div>

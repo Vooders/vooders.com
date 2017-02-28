@@ -15,33 +15,43 @@
 **/
 ?>
 
-<section style="padding: 20px 80px; max-width: 600px;">
-  <h2>Register</h2>
-  <?php
-    echo $this->Form->create($user);
-    
-    echo $this->Form->input('username', [
-      'class'=>'js-users', 'border'
-    ]);
-    
-    echo '<span class="info-span"></span>';
-    
-    echo $this->Form->input('password', [
-      'class' => 'box1'
-    ]);
-    
-    echo $this->Form->input('confirmPassword', [
-      'type' => 'password',
-      'class' => 'box2',
-      'required' => true
-    ]);
-    
-    echo $this->Form->input('email');
-    
-    echo $this->Form->button(__('Submit'), [
-        'class' => 'large button'
-      ]);
-    
-    echo $this->Form->end();
-  ?>
-</section>
+<div class="col-lg-6">
+    <div class="well bs-component">
+        <?= $this->Form->create($user, [
+            'class' => 'form-horizontal'
+        ]) ?>
+            <fieldset>
+                <legend>Register</legend>
+                <div class="form-group">
+                    <?= $this->Form->input('username', [
+                        'class'=>'js-users form-control'
+                    ]) ?>
+
+                    <span class="info-span"></span>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->input('password', [
+                        'class' => 'box1 form-control'
+                    ]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->input('confirmPassword', [
+                        'type' => 'password',
+                        'class' => 'box2 form-control',
+                        'required' => true
+                    ]) ?>
+                </div>
+                <div class="form-group">  
+                    <?= $this->Form->input('email', [
+                        'class' => 'form-control'
+                    ]) ?>
+                </div>  
+            </fieldset>
+            
+            <?= $this->Form->button(__('Submit'), [
+                'class' => 'btn btn-primary btn-lg'
+            ])?>
+        
+        <?= $this->Form->end() ?>
+    </div>
+</div>

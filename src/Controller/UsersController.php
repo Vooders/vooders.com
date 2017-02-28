@@ -15,7 +15,10 @@ use Cake\Auth\DefaultPasswordHasher;
 class UsersController extends AppController
 {
     /**-- Initialisation Methods --**/
-    
+    public function react(){
+        $this->viewBuilder()->layout('react');
+    }
+
     /**
      * Before Filter
      */
@@ -57,6 +60,10 @@ class UsersController extends AppController
      *
      */
     public function profile(){
+
+    }
+
+    public function dashboard(){
         $userId =  $this->request->session()->read('User.id');
 
         $user = $this->Users->get($userId, [
@@ -70,10 +77,12 @@ class UsersController extends AppController
         if($user->mumble_id !== null){
             $this->loadModel('MumbleUsers');
             $mumbleUser = $this->MumbleUsers->get($user->mumble_id);
-            $this->set(compact('mumbleUser'));
+
+        } else{
+            $mumbleUser = null;
         }
 
-        $this->set(compact('user'));
+        $this->set(compact(['user','mumbleUser']));
     }
 
     /**
@@ -119,6 +128,7 @@ class UsersController extends AppController
         $session = $this->request->session();
         $session->write('User.username', $user['username']);
         $session->write('User.id', $user['id']);
+        $session->write('User.lastAccess', $user['last_access']);
     }
 
     /**
@@ -173,32 +183,40 @@ class UsersController extends AppController
     public function resetPassword($hash=null, $id=null)
     {
         $user = $this->Users->get($id);
-        if(strtotime($user->reset_time) > strtotime('-120 minutes')) {
-            if($hash === $user->reset_hash){
-            // All good - let them reset their password
-                if ($this->request->is(['patch', 'post', 'put'])) {
-                    $user = $this->Users->patchEntity($user, $this->request->data);
-                    $user['reset_hash'] = null;
-                    $user['reset_time'] = null;
-                    if ($this->Users->save($user)) {
-                        $this->Flash->success(__('Your password has been reset. Please login.'));
-                        $this->redirect(['action'=>'login']);
-                    } else {
-                        $this->Flash->error(__('Sorry, the password did not save. Please try again'));
-                        $this->redirect(['action'=>'requestPasswordReset']);
+        if($user){
+            if(strtotime($user->reset_time) > strtotime('-120 minutes')) {
+                if($hash === $user->reset_hash){
+                // All good - let them reset their password
+                    if ($this->request->is(['patch', 'post', 'put'])) {
+                        $user = $this->Users->patchEntity($user, $this->request->data);
+                        $user['reset_hash'] = null;
+                        $user['reset_time'] = null;
+                        if ($this->Users->save($user)) {
+                            $this->Flash->success(__('Your password has been reset. Please login.'));
+                            return $this->redirect(['action'=>'login']);
+                        } else {
+                            $this->Flash->error(__('Sorry, the password did not save. Please try again'));
+                            return $this->redirect(['action'=>'requestPasswordReset']);
+                        }
                     }
+                } else {
+                    // The hash is wrong, don't accept
+                    $this->Flash->error(__('The link is incorrect. Please try again'));
+                    return $this->redirect(['action'=>'requestPasswordReset']);
                 }
             } else {
-                // The hash is wrong, don't accept
-                $this->Flash->error(__('The link is incorrect. Please try again'));
-                $this->redirect(['action'=>'requestPasswordReset']);
+                // The link has expired
+                $this->Flash->error(__('The password reset has expired. Please try again'));
+                return $this->redirect([
+                    'controller' => 'Pages',
+                    'action'=>'display', 'expired'
+                ]);
             }
         } else {
-            // The link has expired
-            $this->Flash->error(__('The password reset has expired. Please try again'));
-            $this->redirect([
-                'controller' => 'Pages',
-                'action'=>'display', 'expired'
+            $this->Flash->error(__('Broken link'));
+            return $this->redirect([
+                'controller' => 'Users',
+                'action'=>'login'
             ]);
         }
     }

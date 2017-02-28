@@ -27,15 +27,12 @@ $cakeDescription = 'Vooders.com';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('foundation.css') ?>
-    <?= $this->Html->css('foundation-rtl.css') ?>
-	<?= $this->Html->css('foundation-flex.css') ?>
-    <?= $this->Html->css('style.min.css') ?>
+    <?= $this->Html->css('style.css') ?>
 
     <?= $this->Html->script('vendor/jquery.min') ?>
-    
     <?= $this->Html->script('vendor/what-input.min') ?>
     <?= $this->Html->script('foundation') ?>
+    <?= $this->Html->script('bootstrap') ?>
     
     <?= $this->Html->script('global') ?>
 
@@ -44,10 +41,10 @@ $cakeDescription = 'Vooders.com';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    
     <?= $this->Flash->render() ?>
+    <?= $this->element('header') ?>
     <section class="container clearfix">
-        <?= $this->element('header') ?>
+        
         <?= $this->fetch('content') ?>
     </section>
     <footer>

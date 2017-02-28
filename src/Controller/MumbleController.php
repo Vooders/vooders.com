@@ -22,10 +22,10 @@ class MumbleController extends AppController{
 
 
 	public function bingo(){
-		$numbers = []; 	
-		$gameCounter = 0;	
+		$numbers = []; 	// Make an array for the numbers picked
+		$gameCounter = 0;	// and a game counter
 		
-		$ok = false;		
+		$ok = false;	
 		if($gameCounter < 99){			
 			while($ok == false){				
 				$number = rand(1, 99);				

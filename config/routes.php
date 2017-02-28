@@ -54,6 +54,16 @@ Router::scope('/', function ($routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    $routes->connect('/register', ['controller' => 'Users', 'action' => 'register']);
+    $routes->connect('/forgot-password', ['controller' => 'Users', 'action' => 'request-password-reset']);
+    $routes->connect('/forgot-username', ['controller' => 'Users', 'action' => 'forgot-username']);
+    $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile']);
+    $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
+    $routes->connect('/tv', ['controller' => 'Pages', 'action' => 'display', 'tv-home']);
+
+    $routes->connect('/resetpass/*', ['controller' => 'Users', 'action' => 'reset-password']);
     /**
      * Connect catchall routes for all controllers.
      *

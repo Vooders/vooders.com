@@ -19,6 +19,21 @@ class HearthstoneCardsController extends AppController
         ]);
     }  
 
+    public function isAuthorized($user){
+        $this->loadModel('Users');
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
+
+        switch ($this->request->action) {
+                        
+            default:
+                return false;
+                break;
+         } 
+    }
+
 
     /**
     * Refreshes the database with every card from the HearthStone API

@@ -34,13 +34,15 @@ class AppController extends Controller
   public function beforeFilter(Event $event){}
 
 
-  /**
-  * Add all auth condidtions for this controller here!
-  */
-  public function isAuthorized($user)
-  {
-    return true;
-  }
+    /**
+    * Add all auth condidtions for this controller here!
+    */
+    public function isAuthorized($user){
+        if($user['id'] == 1){
+            return true;
+        }
+        return false;
+    }
 
   
     /**
@@ -73,7 +75,7 @@ class AppController extends Controller
           'action'=>'login'
         ],
         'authorize'=>'Controller',
-        'unauthorizedRedirect'=>['controller'=>'Users', 'action'=>'login']
+        'unauthorizedRedirect'=>['controller'=>'Users', 'action'=>'dashboard']
       ]);
       // Allow the display action so our pages controller
       // continues to work.

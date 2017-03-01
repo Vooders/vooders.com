@@ -3,7 +3,19 @@
 $session = $this->request->session();
 ?>
 <div class="col-lg-9">
-<h1>Dashboard</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Dashboard</h2>
+		</div>
+		<div class="panel-body">
+			<?php if($user->is_vooders): ?>
+				<h6 class="text-info">Vooders</h6>
+			<?php else: ?>
+				<h6 class="text-primary">User</h6>
+			<?php endif; ?>
+			<?= debug($user) ?>
+		</div>
+	</div>
 </div>
 <div class="col-lg-3">
 	<div class="panel panel-primary">
@@ -11,12 +23,25 @@ $session = $this->request->session();
 			<h3 class="panel-title">Account Details</h3>
 		</div>
 		<div class="panel-body">
-		<h6><?= $user->username ?></h6>
-			<p><?= $user->user_emails[0]->email ?><br/>
-			<br/>
-			Joined: <?= $user->created ?><br/>
-			Logged in at: <?= $user->last_access ?><br/>
-			Last Login: <?= $session->read('User.lastAccess') ?></p>
+			<div class="col-lg-8">
+				<h6><?= $user->username ?></h6>
+			</div>
+			<div class="col-lg-4 text-right">
+				<?php if($user->is_vooders): ?>
+					<h6 class="text-danger">Vooders</h6>
+				<?php elseif($user->admin): ?>
+					<h6 class="text-info">Admin</h6>
+				<?php else: ?>
+					<h6 class="text-primary">User</h6>
+				<?php endif; ?>
+			</div>
+			<div class="col-lg-12">
+				<p><?= $user->user_emails[0]->email ?><br/>
+				<br/>
+				Joined: <?= $user->created ?><br/>
+				Logged in at: <?= $user->last_access ?><br/>
+				Last Login: <?= $session->read('User.lastAccess') ?></p>
+			</div>
 		</div>
 	</div>
 

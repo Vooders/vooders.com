@@ -41,11 +41,14 @@ $cakeDescription = 'Vooders.com';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <?= $this->Flash->render() ?>
+    
     <?= $this->element('header') ?>
+    <?= $this->Flash->render() ?>
+    <?= $this->Flash->render('auth') ?>
     <section class="container clearfix">
         
         <?= $this->fetch('content') ?>
+        
     </section>
     <footer>
     </footer>

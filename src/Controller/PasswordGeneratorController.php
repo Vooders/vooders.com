@@ -11,6 +11,24 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class PasswordGeneratorController extends AppController{
 
+	public function isAuthorized($user){
+		$this->loadModel('Users');
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
+
+        switch ($this->request->action) {
+        	case 'index':
+                return true;
+                break;
+        	        	
+            default:
+                return false;
+                break;
+         } 
+    }
+
 	/**
 	 * Attempting to make a password beefer'upper
 	 */

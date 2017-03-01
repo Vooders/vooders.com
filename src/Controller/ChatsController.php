@@ -11,8 +11,22 @@ use Cake\Event\Event;
  */
 class ChatsController extends AppController
 {
+    public function isAuthorized($user){
+        $this->loadModel('Users');
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
 
-   public function comments(){
+        switch ($this->request->action) {
+                        
+            default:
+                return false;
+                break;
+         } 
+    }
+
+    public function comments(){
         $this->autoRender = false;
         $this->response->header('Access-Control-Allow-Origin', '*');
         $chats = $this->Chats->find('all');
@@ -25,7 +39,7 @@ class ChatsController extends AppController
         echo json_encode($results);
    }
 
-   public function beforeFilter(Event $event){
+    public function beforeFilter(Event $event){
         parent::beforeFilter($event);
         $this->Auth->allow(['comments']);
     }

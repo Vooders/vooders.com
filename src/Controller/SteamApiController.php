@@ -20,6 +20,21 @@ class SteamApiController extends AppController{
 		$this->myId = '76561197979418977';
 	}
 
+	public function isAuthorized($user){
+        $this->loadModel('Users');
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
+
+        switch ($this->request->action) {
+                        
+            default:
+                return false;
+                break;
+         } 
+    }
+
 	/**
 	 * Gets all the games owned by the steamID
 	 */

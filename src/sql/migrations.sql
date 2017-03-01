@@ -10,8 +10,13 @@ CREATE TABLE IF NOT EXISTS `chats`(
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
+-- 
 INSERT INTO `chats` (`id`, `author`, `text`) 
 	VALUES (1, 'vooders', 'hello world');
 INSERT INTO `chats` (`id`, `author`, `text`) 
 	VALUES (1, 'dude', 'hello');
+--
+-- -----------------------------------------
+-- User Levels 
+--
+ALTER TABLE `users` ADD `admin` tinyint(1) NOT NULL DEFAULT 0 AFTER `id`;

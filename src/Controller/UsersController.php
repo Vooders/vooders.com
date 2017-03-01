@@ -41,7 +41,28 @@ class UsersController extends AppController
      *
      */
     public function isAuthorized($user){
-        return true; 
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
+
+        switch ($this->request->action) {
+            case 'profile':
+                return true;
+                break;
+
+            case 'logout':
+                return true;
+                break;
+
+            case 'dashboard':
+                return true;
+                break;
+
+            default:
+                return false;
+                break;
+        } 
     }
 
     public function apiKeys(){

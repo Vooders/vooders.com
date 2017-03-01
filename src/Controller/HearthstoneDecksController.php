@@ -10,7 +10,22 @@ use App\Controller\AppController;
  */
 class HearthstoneDecksController extends AppController{
 
-  public function newDeck(){
+	public function isAuthorized($user){
+		$this->loadModel('Users');
+        $user = $this->Users->get($this->Auth->user('id'));
+        if($user->is_vooders){
+            return true;
+        }
+
+        switch ($this->request->action) {
+        	        	
+            default:
+                return false;
+                break;
+         } 
+    }
+
+  	public function newDeck(){
     
-  }
+  	}
 }

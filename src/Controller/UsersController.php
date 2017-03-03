@@ -91,7 +91,8 @@ class UsersController extends AppController
             'contain' => [
                 'UserContacts', 
                 'UserEmails',
-                'BattleTags'
+                'BattleTags',
+                'ProfilePic'
             ]
         ]);
 
@@ -103,7 +104,20 @@ class UsersController extends AppController
             $mumbleUser = null;
         }
 
-        $this->set(compact(['user','mumbleUser']));
+        if($user->is_vooders){
+            $users = $this->Users->find('All')
+                ->contain([
+                    'UserContacts', 
+                    'UserEmails',
+                    'BattleTags',
+                    'ProfilePic'
+                ]);
+            $this->set(compact(['user','mumbleUser','users']));
+        } else {
+            $this->set(compact(['user','mumbleUser']));
+        }
+
+        
     }
 
     /**

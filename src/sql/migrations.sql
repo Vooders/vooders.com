@@ -20,3 +20,31 @@ INSERT INTO `chats` (`id`, `author`, `text`)
 -- User Levels 
 --
 ALTER TABLE `users` ADD `admin` tinyint(1) NOT NULL DEFAULT 0 AFTER `id`;
+ALTER TABLE `users` ADD `image_id` int(11) NULL NULL AFTER `admin`;
+--
+CREATE TABLE IF NOT EXISTS `posts`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `body` text NOT NULL,
+  `delta` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+--
+CREATE TABLE IF NOT EXISTS `post_categories`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+--
+CREATE TABLE IF NOT EXISTS `posts_post_categories`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `post_catgory_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;

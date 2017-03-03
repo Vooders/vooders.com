@@ -43,6 +43,13 @@ class UsersTable extends Table
         $this->hasOne('SteamIds', [
             'foreignKey' => 'user_id'
         ]);
+
+        $this->hasOne('ProfilePic', [
+            'className' => 'Images',
+            'foreignKey' => 'id',
+            'bindingKey' => 'image_id'
+        ]);
+
     }
 
     /**

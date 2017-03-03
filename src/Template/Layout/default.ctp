@@ -28,7 +28,7 @@ $cakeDescription = 'Vooders.com';
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('style.css') ?>
-
+    <link rel="stylesheet" href="css/jquery.fileupload.css">
     <?= $this->Html->script('vendor/jquery.min') ?>
     <?= $this->Html->script('vendor/what-input.min') ?>
     <?= $this->Html->script('foundation') ?>
@@ -52,5 +52,12 @@ $cakeDescription = 'Vooders.com';
     </section>
     <footer>
     </footer>
+    <?= $this->Html->script('app') ?>
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="js/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="js/jquery.fileupload.js"></script>
+    <?= $this->Html->script('app-uploads') ?>
 </body>
 </html>

@@ -62,6 +62,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile']);
     $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
     $routes->connect('/tv', ['controller' => 'Pages', 'action' => 'display', 'tv-home']);
+    $routes->connect('/mandelbrot', ['controller' => 'Pages', 'action' => 'display', 'mandelbrot-set']);
 
     $routes->connect('/resetpass/*', ['controller' => 'Users', 'action' => 'reset-password']);
     /**

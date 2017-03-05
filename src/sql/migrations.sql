@@ -20,6 +20,17 @@ INSERT INTO `chats` (`id`, `author`, `text`)
 -- User Levels 
 --
 ALTER TABLE `users` ADD `admin` tinyint(1) NOT NULL DEFAULT 0 AFTER `id`;
+-- -----------------------------------------
+-- Images
+--
+CREATE TABLE IF NOT EXISTS `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(256) NOT NULL,
+  `file_dir` varchar(256) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+--
 ALTER TABLE `users` ADD `image_id` int(11) NULL NULL AFTER `admin`;
 --
 CREATE TABLE IF NOT EXISTS `posts`(

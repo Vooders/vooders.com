@@ -27,20 +27,24 @@ if($session !== null) $loggedIn = true;
 
 						</ul>
             		</li>
+            <!--
             		<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="tools">Guides<span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="tools">
-							<li><a href="../default/">Default</a></li>
-							<li><a href="../cerulean/">Cerulean</a></li>
-							<li><a href="../cosmo/">Cosmo</a></li>
+
 						</ul>
             		</li>
             		<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="tools">Downloads<span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="tools">
-							<li><a href="../default/">Default</a></li>
-							<li><a href="../cerulean/">Cerulean</a></li>
-							<li><a href="../cosmo/">Cosmo</a></li>
+
+						</ul>
+            		</li>
+            -->
+            		<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="random">Random<span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="random">
+							<li><a href="/mandelbrot">The Mandelbrot set</a></li>
 						</ul>
             		</li>
 				</ul>
@@ -52,7 +56,7 @@ if($session !== null) $loggedIn = true;
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="tools">Account<span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="tools">
 							<li><a href="/dashboard">Dashboard</a></li>
-							<li><a href="/profile">Profile</a></li>
+							<!--<li><a href="/profile">Profile</a></li>-->
 							<li class="divider"></li>
 							<li>
 								<?= $this->Html->link(__('Log Out'), [

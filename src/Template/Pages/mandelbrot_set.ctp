@@ -11,9 +11,44 @@
     </div>
     <div class="col-lg-3">
         <legend>How to</legend>
-        <p>Right click the image for dodgy zoom. The image will zoom in a square from the top right of the cursor on left click.</p>
-        <p>Use the form below to enter x, y and scale and click go to zoom in.</p>
+        <p>Click the image for dodgy zoom. The image will zoom in a square from the top right of the cursor on left click.</p>
+        <p>Use the arrow and zoom buttons to move around the image</p>
+        <p>Use the Coords form below to enter x, y and scale and click go to zoom in.</p>
         <legend>Controls</legend>
+        <div class="well">
+            <div class="row">
+                <div class="col-lg-12 pad-bottom">
+                    <label for="step-speed">Step Speed</label>
+                    <input id="step-speed" class="js-step-set" type="range" min="1" max="100" step="1" value="5"></input>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 5px">
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-zoom-out">-</span>
+                </div>
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-move-up">&#8593;</span>
+                </div>
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-zoom-in">+</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-move-left">&#8592;</span>
+                </div>
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-move-down">&#8595;</span>
+                </div>
+                <div class="col-lg-4">
+                    <span class="btn btn-primary btn-block js-move-right">&#8594;</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="btn btn-primary btn-block js-reset-values">Reset</span>
+        </div>
+        <legend>Coords</legend>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" width=50>&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;</span>
@@ -34,12 +69,13 @@
         </div>
         <div class="form-group">
             <span class="btn btn-primary js-change-values">Go</span>
-            <span class="btn btn-primary js-reset-values">Reset</span>
+            
         </div>       
     </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <h3>Based on</h3>
         <blockquote>
             <p>The Mandelbrot set drawn using JavaScript</p>
             <small><a target="_blank" href="http://slicker.me/fractals/fractals.htm">slicker.me/fractals/fractals.htm</a></small>
@@ -51,26 +87,62 @@
     var x,y,i,xt;
     var cx,cy;
     var color;
+    var step = 5;
+
     var canvas = document.getElementById('myCanvas');
     canvas.addEventListener("mousedown",zoom,false);
     var context = canvas.getContext('2d');
-    mandel();
-    function zoom(event)
-    {
+    draw();
+
+    function moveUp(){
+        ymin = Number(ymin - ((ymin/scale)*step));
+        draw();
+    }
+
+    function moveDown(){
+        ymin = Number(ymin + ((ymin/scale)*step));
+        draw();
+    }
+
+    function moveLeft(){
+        xmin = Number(xmin + ((xmin/scale)*step));
+        draw();
+    }
+
+    function moveRight(){
+        xmin = Number(xmin - ((xmin/scale)*step));
+        draw();
+    }
+
+    function zoomIn(){
+        moveUp();
+        moveRight();
+        scale = Number(scale + (scale/10));
+        draw();
+    }
+
+    function zoomOut(){
+        moveDown();
+        moveLeft();
+        scale = Number(scale - (scale/10));
+        draw();
+    }
+
+    function zoom(event){
         xmin=xmin+Math.floor(event.pageX/4)/scale;
         ymin=-Math.floor(event.pageY/4)/scale+200/scale+ymin;
         scale=scale*2;
-        mandel();
+        draw();
     }
 
     function set(x, y, s){
         xmin = Number(x);
         ymin = Number(y);
         scale = s;
-        mandel();
+        draw();
     }
 
-    function mandel(){      
+    function draw(){      
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         for(x=0;x<200;x++){
             for(y=0;y<200;y++){
@@ -100,16 +172,16 @@
         $('.s-val').val(scale);
     }
 
-    
-    //set(-2, -2, 50);
    // set(-.68, -.74, 1200);
-    //draw();
+
+    $('.js-step-set').on('change', function(){
+        step = $(this).val();
+    });
 
     $('.js-change-values').on('click', function(){
         var x = $('.x-val').val();
         var y = $('.y-val').val();
         var s = $('.s-val').val();
-
         set(x,y,s);
     });
 
@@ -117,7 +189,30 @@
         var x = -2;
         var y = -2;
         var s = 50;
-
         set(x,y,s);
+    });
+
+    $('.js-move-up').on('click', function(){
+        moveUp();
+    });
+
+    $('.js-move-down').on('click', function(){
+        moveDown();
+    });
+
+    $('.js-move-left').on('click', function(){
+        moveLeft();
+    });
+
+    $('.js-move-right').on('click', function(){
+        moveRight();
+    });
+
+    $('.js-zoom-in').on('click', function(){
+        zoomIn();
+    });
+
+    $('.js-zoom-out').on('click', function(){
+        zoomOut();
     });
 </script>

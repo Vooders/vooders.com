@@ -117,14 +117,14 @@
     function zoomIn(){
         moveUp();
         moveRight();
-        scale = Number(scale + (scale/10));
+        scale = Number(scale + (scale/5));
         draw();
     }
 
     function zoomOut(){
         moveDown();
         moveLeft();
-        scale = Number(scale - (scale/10));
+        scale = Number(scale - (scale/5));
         draw();
     }
 

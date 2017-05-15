@@ -19,6 +19,10 @@ class UsersController extends AppController
         $this->viewBuilder()->layout('react');
     }
 
+    public function change() {
+        
+    }
+
     /**
      * Before Filter
      */

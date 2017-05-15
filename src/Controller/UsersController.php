@@ -1,7 +1,7 @@
 <?php
 /**
  * Users Controller
- *
+ * A change
  * @property \App\Model\Table\UsersTable $Users
  */
 namespace App\Controller;
@@ -17,6 +17,7 @@ class UsersController extends AppController
     /**-- Initialisation Methods --**/
     public function react(){
         $this->viewBuilder()->layout('react');
+        debug();
     }
 
     /**

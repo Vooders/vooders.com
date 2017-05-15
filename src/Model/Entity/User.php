@@ -44,19 +44,19 @@ class User extends Entity
 	];
 	
 	public $validate = array(
-    'username' => array(
-      'required' => array(
-        'rule' => 'notBlank',
-        'message' => 'A username is required'
-      )
-    ),
-    'password' => array(
-      'required' => array(
-          'rule' => 'notBlank',
-          'message' => 'A password is required'
-        )
-    )
-  );
+		'username' => array(
+			'required' => array(
+				'rule' => 'notBlank',
+				'message' => 'A username is required'
+			)
+		),
+		'password' => array(
+			'required' => array(
+				'rule' => 'notBlank',
+				'message' => 'A password is required'
+			)
+		)
+	);
 	
 	protected function _getPrimaryEmail(){
 

@@ -17,7 +17,6 @@ class UsersController extends AppController
     /**-- Initialisation Methods --**/
     public function react(){
         $this->viewBuilder()->layout('react');
-        debug();
     }
 
     /**

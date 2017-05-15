@@ -20,7 +20,7 @@ class UsersController extends AppController
     }
 
     public function change() {
-        
+        debug('do stuff');
     }
 
     /**

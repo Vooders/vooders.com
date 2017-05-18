@@ -49,8 +49,19 @@ $entityBody = file_get_contents('php://input');
 $entityBody = json_decode($entityBody);
 
 $text = $entityBody->commits->committer->name . " has triggered a deployment";
+$string = 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=".$text."&username=deploy-bot';
+// cURL the stuff
+$ch = curl_init();
 
-shell_exec("curl -X POST -d 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=".$text."&username=deploy-bot' https://slack.com/api/chat.postMessage 2>&1");
+curl_setopt_array($ch, [
+    CURLOPT_HTTPHEADER => $headers,
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'https://slack.com/api/chat.postMessage',
+    CURLOPT_POSTFIELDS => $string
+]);
+$results = curl_exec($ch);
+curl_close($ch);
+
 
 $output = "\n";
 $log = "####### ".date('Y-m-d H:i:s'). " #######\n";
@@ -60,7 +71,7 @@ $tmp = shell_exec("git pull 2>&1");
 // Output
 $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 $output .= htmlentities(trim($tmp)) . "\n";
-$log  .= "\$ $command\n".trim($tmp)."\n";
+$log  .= "\$ git pull\n".trim($tmp)."\n";
 
 
 
@@ -69,7 +80,7 @@ $tmp = shell_exec("git status 2>&1");
 // Output
 $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 $output .= htmlentities(trim($tmp)) . "\n";
-$log  .= "\$ $command\n".trim($tmp)."\n";
+$log  .= "\$ git status\n".trim($tmp)."\n";
 
 $log .= "\n";
 file_put_contents ('deploy-log.txt',$log,FILE_APPEND);

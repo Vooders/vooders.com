@@ -44,27 +44,33 @@ if (!$allowed) {
     exit;
 }
 flush();
-// Actually run the update
-$commands = array(
-	'echo $PWD',
-	'whoami',
-	'git pull',
-	'git status',
-	'git submodule sync',
-	'git submodule update',
-	'git submodule status',
-    'test -e /usr/share/update-notifier/notify-reboot-required && echo "system restart required"',
-);
+
+$entityBody = file_get_contents('php://input');
+$entityBody = json_decode($entityBody);
+
+$text = $entityBody->commits->committer->name . " has triggered a deployment";
+
+shell_exec("curl -X POST -d 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=".$text."&username=deploy-bot' https://slack.com/api/chat.postMessage 2>&1");
+
 $output = "\n";
 $log = "####### ".date('Y-m-d H:i:s'). " #######\n";
-foreach($commands AS $command){
-    // Run it
-    $tmp = shell_exec("$command 2>&1");
-    // Output
-    $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-    $output .= htmlentities(trim($tmp)) . "\n";
-    $log  .= "\$ $command\n".trim($tmp)."\n";
-}
+
+// Run it
+$tmp = shell_exec("git pull 2>&1");
+// Output
+$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+$output .= htmlentities(trim($tmp)) . "\n";
+$log  .= "\$ $command\n".trim($tmp)."\n";
+
+
+
+// Run it
+$tmp = shell_exec("git status 2>&1");
+// Output
+$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+$output .= htmlentities(trim($tmp)) . "\n";
+$log  .= "\$ $command\n".trim($tmp)."\n";
+
 $log .= "\n";
 file_put_contents ('deploy-log.txt',$log,FILE_APPEND);
 echo $output; 

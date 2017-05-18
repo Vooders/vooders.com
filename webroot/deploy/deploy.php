@@ -1,6 +1,7 @@
 <?php
 // Forked from https://gist.github.com/1809044
 // Available from https://gist.github.com/nichtich/5290675#file-deploy-php
+// curl -X POST -d 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=Text here.&username=deploy-bot' https://slack.com/api/chat.postMessage
 $TITLE   = 'Git Deployment Hamster';
 $VERSION = '0.11';
 echo <<<EOT

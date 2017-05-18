@@ -44,46 +44,21 @@ if (!$allowed) {
     exit;
 }
 flush();
-
-$entityBody = file_get_contents('php://input');
-$entityBody = json_decode($entityBody);
-
-$text = $entityBody->commits->committer->name . " has triggered the deployment script";
-// cURL the stuff
-$ch = curl_init();
-
-curl_setopt_array($ch, [
-    CURLOPT_URL => 'https://slack.com/api/chat.postMessage',
-    CURLOPT_POSTFIELDS => [
-        'token' => 'xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo',
-        'channel' => 'kevs-test',
-        'text' => $text,
-        'username' => 'deploy-bot'
-    ]
-]);
-$results = curl_exec($ch);
-curl_close($ch);
-
-
+// Actually run the update
+$commands = array(
+	'git pull',
+	'git status'
+);
 $output = "\n";
 $log = "####### ".date('Y-m-d H:i:s'). " #######\n";
-
-// Run it
-$tmp = shell_exec("git pull 2>&1");
-// Output
-$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-$output .= htmlentities(trim($tmp)) . "\n";
-$log  .= "\$ git pull\n".trim($tmp)."\n";
-
-
-
-// Run it
-$tmp = shell_exec("git status 2>&1");
-// Output
-$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-$output .= htmlentities(trim($tmp)) . "\n";
-$log  .= "\$ git status\n".trim($tmp)."\n";
-
+foreach($commands AS $command){
+    // Run it
+    $tmp = shell_exec("$command 2>&1");
+    // Output
+    $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+    $output .= htmlentities(trim($tmp)) . "\n";
+    $log  .= "\$ $command\n".trim($tmp)."\n";
+}
 $log .= "\n";
 file_put_contents ('deploy-log.txt',$log,FILE_APPEND);
 echo $output; 

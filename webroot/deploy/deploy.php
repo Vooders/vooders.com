@@ -48,16 +48,18 @@ flush();
 $entityBody = file_get_contents('php://input');
 $entityBody = json_decode($entityBody);
 
-$text = $entityBody->commits->committer->name . " has triggered a deployment";
-$string = 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=".$text."&username=deploy-bot';
+$text = $entityBody->commits->committer->name . " has triggered the deployment script";
 // cURL the stuff
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_HTTPHEADER => $headers,
-    CURLOPT_RETURNTRANSFER => 1,
     CURLOPT_URL => 'https://slack.com/api/chat.postMessage',
-    CURLOPT_POSTFIELDS => $string
+    CURLOPT_POSTFIELDS => [
+        'token' => 'xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo',
+        'channel' => 'kevs-test',
+        'text' => $text,
+        'username' => 'deploy-bot'
+    ]
 ]);
 $results = curl_exec($ch);
 curl_close($ch);

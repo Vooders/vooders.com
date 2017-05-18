@@ -1,0 +1,18 @@
+####### 2017-05-18 16:58:19 #######
+$ echo $PWD
+/mnt/c/development/public_html/vooders/webroot/deploy
+$ whoami
+www-data
+$ git pull
+sh: 1: git: not found
+$ git status
+sh: 1: git: not found
+$ git submodule sync
+sh: 1: git: not found
+$ git submodule update
+sh: 1: git: not found
+$ git submodule status
+sh: 1: git: not found
+$ test -e /usr/share/update-notifier/notify-reboot-required && echo "system restart required"
+system restart required
+

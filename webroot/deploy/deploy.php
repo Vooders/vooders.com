@@ -1,7 +1,7 @@
 <?php
 // Forked from https://gist.github.com/1809044
 // Available from https://gist.github.com/nichtich/5290675#file-deploy-php
-// curl -X POST -d 'token=xoxb-184717169201-pqbrIEhySnzdzGmc4MKGGswo&channel=kevs-test&text=Text here.&username=deploy-bot' https://slack.com/api/chat.postMessage
+
 $TITLE   = 'Git Deployment Hamster';
 $VERSION = '0.11';
 echo <<<EOT
@@ -21,7 +21,7 @@ EOT;
 // Check whether client is allowed to trigger an update
 $allowed_ips = array(
 	'207.97.227.', '50.57.128.', '108.171.174.', '50.57.231.', '204.232.175.', '192.30.252.',  // GitHub
-   '95.85.55.96'
+    '95.85.55.96'
 );
 $allowed = false;
 $headers = apache_request_headers();
@@ -65,4 +65,4 @@ echo $output;
 ?>
 </pre>
 </body>
-</html>
+</html>   
